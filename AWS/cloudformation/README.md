@@ -25,7 +25,7 @@ The template deploys:
 - One LoadCore in the management subnet
 - Two LoadCore Agents with two interfaces each. The first interface will be used for mananagament and the second interface will be used for testing
 
-### LoadCore, two LoadCore Agents, License Server 
+### LoadCore, two LoadCore Agents, License Server and one custom test subnet
 Name: loadcore_two_agents_license_server_test_subnet.json
 The template deploys:
 - One LoadCore in the management subnet

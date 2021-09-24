@@ -1,4 +1,4 @@
-# Deploying LoadCore, two LoadCore Agents and a License Server in AWS
+# LoadCore, two LoadCore Agents, License Server and one custom test subnet
 
 The template deploys:
 - One LoadCore in the management subnet
