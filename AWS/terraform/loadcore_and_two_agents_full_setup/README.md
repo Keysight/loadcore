@@ -32,6 +32,7 @@ In order to modify the default values, you should modify the **terraform.tfvars*
 Other variables that can be modified in **variables.tf** file.
 
 | **Parameter label (name)**                  | **Default**            | **Description**  |
+| ----------------------- | ----------------- | ----- |
 | loadcore_type   | c4.2xlarge   | The instance type used for deploying the LoadCore. |
 | loadcore_agent_type    | c5.2xlarge   |The instance type used for deploying the LoadCore agent.  |
 
