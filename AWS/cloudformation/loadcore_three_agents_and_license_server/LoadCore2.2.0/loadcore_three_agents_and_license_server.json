@@ -92,7 +92,7 @@
                 "InstanceBlockDeviceName": "/dev/sda1",
                 "InstanceEbsDeleteOnTermination": "true",
                 "InstanceEbsVolumeType": "gp2",
-                "LoadCoreVersion": "LoadCore2.1"
+                "LoadCoreVersion": "LoadCore2.2"
             }
         }
     },
