@@ -62,7 +62,7 @@ variable "loadcore_version" {
 
 variable "loadcore_agent_version" {
   type        = string
-  default     = "LoadCore-Agent-3.0.0*"
+  default     = "LoadCore-Agent-3.0.0.640*"
   description = "Image name for LoadCore Agent"
 }
 
