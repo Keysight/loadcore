@@ -846,7 +846,7 @@
                     "osDisk": {
                         "osType": "Linux",
                         "osState": "Generalized",
-                        "diskSizeGB": 11,
+                        "diskSizeGB": 128,
                         "blobUri": "[concat('https://', variables('storageAccountName'), '.blob.core.windows.net/', variables('containerName'), '/', reference(variables('scriptNameGetVhds')).outputs.licresult[0].name)]",
                         "caching": "ReadWrite",
                         "storageAccountType": "Standard_LRS"
