@@ -1,18 +1,16 @@
 {
-	"id": "wireless-119",
+	"id": "wireless-4199",
 	"displayName": "FullCore-IMS-10UEs-MO-MT-S11-EPS-Fallback",
-	"lastModified": 1619105362,
-	"lastModifiedAsString": "2021-04-22T15:29:22Z",
+	"lastModified": 1647971084,
 	"lastAccessed": 1619105362,
-	"lastAccessedAsString": "2021-04-22T15:29:22Z",
 	"tags": {
 		"category": "Full Core"
 	},
 	"type": "wireless",
-	"ownerId": "6d3d49a6-2e80-4467-b422-c5c727f3f739",
-	"owner": "ana@yahoo.com",
+	"ownerId": "68d50bbf-1c39-4ad0-a1cb-c957710b2794",
+	"owner": "admin@example.org",
 	"readonly": false,
-	"configUrl": "http://wireless-data-model.keysight-wap.svc.cluster.local./api/v2/configs/wireless-119",
+	"configUrl": "http://wireless-data-model.keysight-wap.svc.cluster.local./api/v2/configs/wireless-4199",
 	"configData": {
 		"Config": {
 			"globalSettings": {
@@ -22,6 +20,7 @@
 					"customCaptureSizeForIxStack": 500000,
 					"customPollingInterval": 3,
 					"enableLoCapture": true,
+					"enablePerSessionStats": false,
 					"overwriteCaptureSizeForIxStack": true,
 					"userplane": "one-way-delay-and-jitter"
 				},
@@ -45,14 +44,6 @@
 							"UNSTRUCTURED",
 							"ETHERNET"
 						],
-						"authentication": {
-							"eapttls": {
-								"clientCertificate": "MIID5jCCA0+gAwIBAgIJAL4iLHDedYYTMA0GCSqGSIb3DQEBBQUAMIGpMQswCQYDVQQGEwJSTzELMAkGA1UECBMCQlUxEjAQBgNVBAcTCUJ1Y2hhcmVzdDEXMBUGA1UEChMOaHlwZXJtYWdpay5jb20xEzARBgNVBAsTCkh5cGVybWFnaUsxEzARBgNVBAMTCkh5cGVybWFnaUsxEzARBgNVBCkTCkh5cGVybWFnaUsxITAfBgkqhkiG9w0BCQEWEnJzYUBoeXBlcm1hZ2lrLmNvbTAeFw0xMzExMjUxNDU2MTVaFw0yMzExMjMxNDU2MTVaMIGpMQswCQYDVQQGEwJSTzELMAkGA1UECBMCQlUxEjAQBgNVBAcTCUJ1Y2hhcmVzdDEXMBUGA1UEChMOaHlwZXJtYWdpay5jb20xEzARBgNVBAsTCkh5cGVybWFnaUsxEzARBgNVBAMTCkh5cGVybWFnaUsxEzARBgNVBCkTCkh5cGVybWFnaUsxITAfBgkqhkiG9w0BCQEWEnJzYUBoeXBlcm1hZ2lrLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAy2F1e+kgct4adVk78chK1R8Ju5SZ3hhexCC2XqL0tLDNhInTCn2D4y3eQW1wbsdaOW16zmyoEPr2kqbUjdXwiSB20Mo/X8dVskqpOmD+Bho5/I01dMwVtq5WVEGwmAdFKl6vggWnPwfxdxmsC/lFJjk5gG5g87YHIFV5hl28bAUCAwEAAaOCARIwggEOMB0GA1UdDgQWBBT+Y4/rRVJKmOMAGbfAL0xH0jtNuzCB3gYDVR0jBIHWMIHTgBT+Y4/rRVJKmOMAGbfAL0xH0jtNu6GBr6SBrDCBqTELMAkGA1UEBhMCUk8xCzAJBgNVBAgTAkJVMRIwEAYDVQQHEwlCdWNoYXJlc3QxFzAVBgNVBAoTDmh5cGVybWFnaWsuY29tMRMwEQYDVQQLEwpIeXBlcm1hZ2lLMRMwEQYDVQQDEwpIeXBlcm1hZ2lLMRMwEQYDVQQpEwpIeXBlcm1hZ2lLMSEwHwYJKoZIhvcNAQkBFhJyc2FAaHlwZXJtYWdpay5jb22CCQC+Iixw3nWGEzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBACCv4/AUa5Yog09LokotidE46dW7nhwtqscTvxzBFZdMoxNy/K6GqI6QEioYWQSSntuGBVR2nAIqXN6sSZQAITRthFNh75vzAMhF71Jy+kTMqt9RHX34KISmC6OuMcXbgBsIV61LSCjsFcBh2rEPJgL894/aLmtkIsgwxbNlCo2y",
-								"password": "secret",
-								"tunneledAuthenticationMethod": "chap"
-							},
-							"type": "no_auth"
-						},
 						"chfInfo": {
 							"primaryChfAddress": "",
 							"secondaryChfAddress": ""
@@ -61,6 +52,10 @@
 						"defaultSSCMode": "ssc-mode-1",
 						"defaultSessionType": "IPV4",
 						"dnn": "dnn.keysight.com",
+						"epco": {
+							"requestDNSServerIPAddress": false,
+							"requestIPv4LinkMTU": false
+						},
 						"gbrDl": "100 bps",
 						"gbrUl": "100 bps",
 						"id": "1",
@@ -92,7 +87,18 @@
 							"silver",
 							"gold"
 						],
-						"subscSpendinglimits": true
+						"subscSpendinglimits": true,
+						"trafficControlSettings": {
+							"enabled": false,
+							"suspendTrafficTimer": 0,
+							"trafficControl": {
+								"remote": {
+									"v4": [],
+									"v6": []
+								},
+								"suspendTrafficInterval": 1
+							}
+						}
 					}
 				],
 				"dnsResolver": {
@@ -101,7 +107,9 @@
 				},
 				"flows": [
 					{
+						"appId": "",
 						"averagingWindow": 2000,
+						"dualConnectivityFlow": false,
 						"fiveQi": 5,
 						"gbr": {
 							"downlinkBitrateUnit": "u1Kbps",
@@ -111,6 +119,7 @@
 						},
 						"id": "1",
 						"isDefault": true,
+						"isPredefinedOnSMF": false,
 						"mappedEBI": 5,
 						"maxDataBurstVolume": 2000,
 						"maxPacketLossRate": {
@@ -150,10 +159,13 @@
 						"resourceType": "NON_GBR",
 						"segregation": false,
 						"type": "data",
-						"useMatchAllPacketFilter": true
+						"useMatchAllPacketFilter": true,
+						"usePrecedenceForAppId": true
 					},
 					{
+						"appId": "",
 						"averagingWindow": 2000,
+						"dualConnectivityFlow": false,
 						"fiveQi": 1,
 						"gbr": {
 							"downlinkBitrateUnit": "u1Kbps",
@@ -163,6 +175,7 @@
 						},
 						"id": "2",
 						"isDefault": false,
+						"isPredefinedOnSMF": false,
 						"mappedEBI": 1,
 						"maxDataBurstVolume": 2000,
 						"maxPacketLossRate": {
@@ -182,6 +195,7 @@
 						"packetFilterList": [
 							{
 								"direction": "bidirectional",
+								"flowLabel": 0,
 								"id": "1",
 								"ipv4RemoteAddress": "192.168.0.22/255.255.0.0",
 								"ipv6RemoteAddressAndPrefixLength": "2001::1:11d2:8f92:64bc:dff0/64",
@@ -201,7 +215,8 @@
 						"resourceType": "NON_CRITICAL_GBR",
 						"segregation": false,
 						"type": "audio",
-						"useMatchAllPacketFilter": true
+						"useMatchAllPacketFilter": true,
+						"usePrecedenceForAppId": true
 					}
 				],
 				"gtpuSourcePort": {
@@ -237,7 +252,9 @@
 				},
 				"techSpecVersion": "r15-v2019-09",
 				"trafficSettings": {
-					"reservedCores": 1
+					"enableRTP": true,
+					"reservedCores": 1,
+					"trafficCtrlPort": 44556
 				}
 			},
 			"name": "FullCore-IMS-10UEs-MO-MT-S11-EPS-Fallback",
@@ -252,26 +269,6 @@
 							"enable": true,
 							"id": "1",
 							"interfaces": {
-								"n14": {
-									"connectivitySettings": {
-										"firstVLAN": {
-											"enable": false,
-											"idStart": 0,
-											"tpid": "h8100"
-										},
-										"gwIncrement": "0.0.0.0",
-										"gwStart": "0.0.0.0",
-										"ipPrefix": 16,
-										"localIPAddress": "20.0.14.10",
-										"macIncrement": "000000000001",
-										"macStart": "0031DD000001",
-										"secondVLAN": {
-											"enable": false,
-											"idStart": 0,
-											"tpid": "h8100"
-										}
-									}
-								},
 								"n2": {
 									"connectivitySettings": {
 										"firstVLAN": {
@@ -355,6 +352,7 @@
 								}
 							},
 							"remoteNodes": {
+								"amfList": [],
 								"ausf": {
 									"port": 80,
 									"protocol": "http",
@@ -461,6 +459,7 @@
 										"gwStart": "0.0.0.0",
 										"ipPrefix": 16,
 										"localIPAddress": "20.0.6.10",
+										"localIPAddressIncrement": "0.0.0.1",
 										"macIncrement": "000000000001",
 										"macStart": "0061BB000001",
 										"mss": 1460,
@@ -490,6 +489,7 @@
 												"flows": [
 													{
 														"clientTxCount": 8,
+														"dataCustomParameters": [],
 														"flowId": "1",
 														"id": "1",
 														"pageSize": 2000000,
@@ -502,12 +502,27 @@
 												"throughput": 1000
 											},
 											"delay": 0,
+											"dnsserver": {
+												"flows": [
+													{
+														"dnsCustomParameters": [],
+														"flowId": "1",
+														"id": "1",
+														"port": 53,
+														"type": "dns-server",
+														"zones": []
+													}
+												],
+												"objectiveType": "simulated_users"
+											},
 											"id": "1",
 											"mss": 1416,
 											"ottserver": {
 												"flows": [
 													{
+														"flowId": "1",
 														"id": "1",
+														"ottCustomParameters": [],
 														"port": 80,
 														"serverName": "OTT-SERVER-1",
 														"streams": [
@@ -515,8 +530,13 @@
 																"enable": true,
 																"id": "1",
 																"protocol": "hls",
-																"qualityLevels": [
-																	0
+																"qualityLevelsList": [
+																	{
+																		"bitrate": 1000,
+																		"fps": 30,
+																		"id": "1",
+																		"resolution": "1920x1080"
+																	}
 																],
 																"segmentDuration": 0,
 																"streamDuration": 0,
@@ -561,7 +581,8 @@
 														"enableOWD": false,
 														"enableRTCP": false,
 														"enableSRTP": false,
-														"localPort": 10000
+														"localPort": 10000,
+														"localPortIncrement": 2
 													},
 													"sipSettings": {
 														"authentication": {
@@ -578,13 +599,17 @@
 														},
 														"callType": "basic-call",
 														"customHeaders": [],
+														"customParameters": [],
 														"domainName": "keysight",
 														"dstIP": "20.0.6.10",
+														"dstIPIncrement": "0.0.0.0",
 														"dstPhoneIncrement": 1,
 														"dstPhoneURI": "11100000",
 														"dstPort": 5060,
 														"imsi": "22604000000042",
+														"imsiPhoneIncrement": 1,
 														"localPort": 5060,
+														"srcPhoneIncrement": 1,
 														"srcPhoneURI": "44400000",
 														"transportProtocol": "tcp",
 														"useUeRangeIdentification": true
@@ -615,7 +640,6 @@
 						}
 					],
 					"settings": {
-						"enable": true,
 						"mappedAgents": []
 					}
 				},
@@ -802,8 +826,26 @@
 								},
 								"s1": {
 									"connectivitySettings": {
-										"localIPAddress": "20.10.20.10"
-									}
+										"firstVLAN": {
+											"enable": false,
+											"idStart": 0,
+											"tpid": "h8100"
+										},
+										"gwIncrement": "0.0.0.0",
+										"gwStart": "0.0.0.0",
+										"ipPrefix": 0,
+										"localIPAddress": "20.10.20.10",
+										"macIncrement": "000000000001",
+										"macStart": "0021EE000001",
+										"mss": 1460,
+										"mtu": 1500,
+										"secondVLAN": {
+											"enable": false,
+											"idStart": 0,
+											"tpid": "h8100"
+										}
+									},
+									"port": 36412
 								},
 								"s11": {
 									"connectivitySettings": {
@@ -871,7 +913,9 @@
 						}
 					],
 					"settings": {
-						"enable": true
+						"enable": true,
+						"groupingType": "with_ran",
+						"mappedAgents": []
 					}
 				},
 				"nrf": {
@@ -1065,6 +1109,11 @@
 							},
 							"isDut": false,
 							"nodeSettings": {
+								"askResultNotificationForCreateDeleteFlowFromSMF": true,
+								"defaultChargingMethods": {
+									"offline": false,
+									"online": false
+								},
 								"includeRequest": true,
 								"instanceId": "7ea3abc7-f0f6-435b-9154-145deddd101d",
 								"mcc": "226",
@@ -1074,6 +1123,7 @@
 									"originHost": "host",
 									"originRealm": "keysight.com"
 								},
+								"ratTypeAwareness": "5GOnly",
 								"rfsp": 4,
 								"servAreaRes": {
 									"areas": [
@@ -1122,6 +1172,8 @@
 							"interfaces": {
 								"n2": {
 									"connectivitySettings": {
+										"erAddress": "",
+										"erPrefix": 24,
 										"firstVLAN": {
 											"enable": false,
 											"idStart": 0,
@@ -1149,6 +1201,8 @@
 								},
 								"n3": {
 									"connectivitySettings": {
+										"erAddress": "",
+										"erPrefix": 24,
 										"firstVLAN": {
 											"enable": false,
 											"idStart": 0,
@@ -1220,6 +1274,8 @@
 							"interfaces": {
 								"s1": {
 									"connectivitySettings": {
+										"erAddress": "",
+										"erPrefix": 24,
 										"firstVLAN": {
 											"enable": false,
 											"idStart": 0,
@@ -1233,17 +1289,21 @@
 										"macStart": "0051BB000001",
 										"mss": 1460,
 										"mtu": 1500,
-										"peerIds": null,
+										"peerIds": [
+											"200000"
+										],
 										"secondVLAN": {
 											"enable": false,
 											"idStart": 0,
 											"tpid": "h8100"
-										}
-									},
-									"enabled": false
+										},
+										"sourceSCTPPort": 36412
+									}
 								},
 								"s1u": {
 									"connectivitySettings": {
+										"erAddress": "",
+										"erPrefix": 24,
 										"firstVLAN": {
 											"enable": false,
 											"idStart": 0,
@@ -1362,7 +1422,7 @@
 					],
 					"settings": {
 						"enable": true,
-						"groupingType": "s11"
+						"groupingType": "with_smf"
 					}
 				},
 				"smf": {
@@ -1392,6 +1452,7 @@
 											"tpid": "h8100"
 										}
 									},
+									"include3GPPInterfaceType": false,
 									"useRemoteFTeidAllocation": false
 								},
 								"nsmf": {
@@ -1455,14 +1516,18 @@
 											"sst": 1
 										}
 									}
-								]
+								],
+								"subscribeForAMFEvents": false
 							},
 							"remoteNodes": {
-								"amf": {
-									"port": 80,
-									"protocol": "http",
-									"remoteSBAPeerId": "1"
-								},
+								"amfList": [
+									{
+										"id": "1",
+										"port": 80,
+										"protocol": "http",
+										"remoteSBAPeerId": "1"
+									}
+								],
 								"nrf": {
 									"port": 80,
 									"protocol": "http",
@@ -1473,6 +1538,7 @@
 									"protocol": "http",
 									"remoteSBAPeerId": "1"
 								},
+								"remoteAmfType": "preset",
 								"udm": {
 									"port": 80,
 									"protocol": "http",
@@ -1559,16 +1625,20 @@
 									"connectivitySettings": {
 										"firstVLAN": {
 											"enable": false,
-											"idStart": 0
+											"idStart": 0,
+											"tpid": "h8100"
 										},
 										"gwIncrement": "0.0.0.0",
 										"gwStart": "0.0.0.0",
 										"ipPrefix": 16,
 										"localIPAddress": "20.100.30.10",
+										"macIncrement": "000000000001",
+										"macStart": "0088EE000001",
 										"port": 3868,
 										"secondVLAN": {
 											"enable": false,
-											"idStart": 0
+											"idStart": 0,
+											"tpid": "h8100"
 										}
 									}
 								}
@@ -1735,12 +1805,18 @@
 										"enable": false,
 										"forceN2": false,
 										"maxOutstanding": 100,
+										"mobilityForState": "connected",
 										"onlyOnce": false,
 										"rate": 1,
 										"type": "handover",
-										"visitedGNBs": [
-											"1",
-											"100000"
+										"visitedNodes": [
+											{
+												"forceStateBeforeHO": "none",
+												"id": "2",
+												"name": "eNodeB-1",
+												"nodeId": "100000",
+												"secondaryNodeId": "-1"
+											}
 										]
 									},
 									"paging": {
@@ -1750,7 +1826,6 @@
 										"onlyOnce": false,
 										"rate": 1,
 										"trafficControl": {
-											"port": 44556,
 											"remote": "20.0.30.10",
 											"suspendTrafficInterval": 1
 										},
@@ -1813,6 +1888,11 @@
 									"value": "10000000000"
 								}
 							},
+							"parentRan": {
+								"id": "",
+								"nodeId": "1",
+								"secondaryNodeId": "-1"
+							},
 							"policy": {
 								"am": {
 									"subscCats": [
@@ -1858,6 +1938,8 @@
 							"settings": {
 								"activeTime": 5,
 								"authenticateDuringMobilityRegistration": "never",
+								"authenticateDuringRegistrationWithGUTI": false,
+								"checkAUTN": false,
 								"defaultNssai": [
 									{
 										"id": "1",
@@ -1868,11 +1950,29 @@
 									}
 								],
 								"delayBeforeDeregister": 0,
+								"delayBeforeHandoverNotify": 0,
 								"delayBeforeIndirectForwardingCleanup": 5000,
 								"delayBeforePDUSessionCreate": 0,
 								"deregistrationSwitchOff": true,
 								"dnnsConfig": [
 									{
+										"alternateSessionId": 8,
+										"authentication": {
+											"chap": {
+												"secret": "secret",
+												"user": ""
+											},
+											"eapttls": {
+												"clientCertificate": "MIID5jCCA0+gAwIBAgIJAL4iLHDedYYTMA0GCSqGSIb3DQEBBQUAMIGpMQswCQYDVQQGEwJSTzELMAkGA1UECBMCQlUxEjAQBgNVBAcTCUJ1Y2hhcmVzdDEXMBUGA1UEChMOaHlwZXJtYWdpay5jb20xEzARBgNVBAsTCkh5cGVybWFnaUsxEzARBgNVBAMTCkh5cGVybWFnaUsxEzARBgNVBCkTCkh5cGVybWFnaUsxITAfBgkqhkiG9w0BCQEWEnJzYUBoeXBlcm1hZ2lrLmNvbTAeFw0xMzExMjUxNDU2MTVaFw0yMzExMjMxNDU2MTVaMIGpMQswCQYDVQQGEwJSTzELMAkGA1UECBMCQlUxEjAQBgNVBAcTCUJ1Y2hhcmVzdDEXMBUGA1UEChMOaHlwZXJtYWdpay5jb20xEzARBgNVBAsTCkh5cGVybWFnaUsxEzARBgNVBAMTCkh5cGVybWFnaUsxEzARBgNVBCkTCkh5cGVybWFnaUsxITAfBgkqhkiG9w0BCQEWEnJzYUBoeXBlcm1hZ2lrLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAy2F1e+kgct4adVk78chK1R8Ju5SZ3hhexCC2XqL0tLDNhInTCn2D4y3eQW1wbsdaOW16zmyoEPr2kqbUjdXwiSB20Mo/X8dVskqpOmD+Bho5/I01dMwVtq5WVEGwmAdFKl6vggWnPwfxdxmsC/lFJjk5gG5g87YHIFV5hl28bAUCAwEAAaOCARIwggEOMB0GA1UdDgQWBBT+Y4/rRVJKmOMAGbfAL0xH0jtNuzCB3gYDVR0jBIHWMIHTgBT+Y4/rRVJKmOMAGbfAL0xH0jtNu6GBr6SBrDCBqTELMAkGA1UEBhMCUk8xCzAJBgNVBAgTAkJVMRIwEAYDVQQHEwlCdWNoYXJlc3QxFzAVBgNVBAoTDmh5cGVybWFnaWsuY29tMRMwEQYDVQQLEwpIeXBlcm1hZ2lLMRMwEQYDVQQDEwpIeXBlcm1hZ2lLMRMwEQYDVQQpEwpIeXBlcm1hZ2lLMSEwHwYJKoZIhvcNAQkBFhJyc2FAaHlwZXJtYWdpay5jb22CCQC+Iixw3nWGEzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBACCv4/AUa5Yog09LokotidE46dW7nhwtqscTvxzBFZdMoxNy/K6GqI6QEioYWQSSntuGBVR2nAIqXN6sSZQAITRthFNh75vzAMhF71Jy+kTMqt9RHX34KISmC6OuMcXbgBsIV61LSCjsFcBh2rEPJgL894/aLmtkIsgwxbNlCo2y",
+												"password": "secret",
+												"tunneledAuthenticationMethod": "chap"
+											},
+											"pap": {
+												"password": "secret",
+												"user": ""
+											},
+											"type": "no_auth"
+										},
 										"dnnID": "1",
 										"id": "1",
 										"ipAddress": {
@@ -1885,13 +1985,15 @@
 											"value": "3000:A::1"
 										},
 										"ipv6Prefix": 64,
+										"sessionId": 1,
 										"snssai": {
 											"enable": false,
 											"forceConfigured": false,
 											"ueNssai": {
 												"peerId": "1"
 											}
-										}
+										},
+										"sscMode": "ssc-mode-1"
 									}
 								],
 								"emergencyRegistrationIdentityType": "suci",
@@ -1908,6 +2010,7 @@
 								],
 								"forceEmergencyRegistration": false,
 								"forceIdentificationDuringRegistration": false,
+								"includeUEContextRequest": true,
 								"ipAddressIncrement": "1",
 								"micoAllowed": false,
 								"nssai": [
@@ -1922,6 +2025,7 @@
 								"ratRestrictions": [
 									"WLAN"
 								],
+								"registerWithGUTI": false,
 								"releasePDUSessionsBeforeDeregistration": true,
 								"sendNativeGUTIinMobilityRegistrationIRAT": true,
 								"serviceAreaRestriction": {
@@ -1955,7 +2059,6 @@
 										}
 									}
 								],
-								"sscMode": "ssc-mode-1",
 								"subsRegTimer": 5,
 								"subscribedAMBR": {
 									"downlink": 1000,
@@ -1997,6 +2100,7 @@
 											"flows": [
 												{
 													"clientTxCount": 8,
+													"dataCustomParameters": [],
 													"dnnId": "1",
 													"enableDnsQueryPerConnection": false,
 													"flowId": "1",
@@ -2013,9 +2117,29 @@
 												}
 											],
 											"objectiveType": "throughput",
+											"simulatedUsers": 1,
 											"throughput": 1000
 										},
 										"delay": 0,
+										"dnsclient": {
+											"flows": [
+												{
+													"dnnId": "1",
+													"dnsCustomParameters": [],
+													"dnsServerIP": "20.0.6.10",
+													"flowId": "1",
+													"hostname": "media.keysight.com",
+													"id": "1",
+													"iterations": 0,
+													"numberOfDNSServers": 1,
+													"port": 53,
+													"queryType": "A",
+													"type": "dns-client"
+												}
+											],
+											"objectiveType": "simulated_users",
+											"transactionsRate": 10
+										},
 										"id": "1",
 										"mss": 1416,
 										"ott": {
@@ -2031,6 +2155,7 @@
 													"jbMaxSize": 500,
 													"maxTransactions": true,
 													"mos": "disabled",
+													"ottCustomParameters": [],
 													"percentage": 100,
 													"playDuration": 60,
 													"playUntilEnd": false,
@@ -2056,7 +2181,8 @@
 													"url": "undefined"
 												}
 											],
-											"objectiveType": "simulated_users"
+											"objectiveType": "simulated_users",
+											"throughput": 0
 										},
 										"type": "voice",
 										"voice": {
@@ -2089,7 +2215,8 @@
 													"enableOWD": false,
 													"enableRTCP": false,
 													"enableSRTP": false,
-													"localPort": 10000
+													"localPort": 10000,
+													"localPortIncrement": 0
 												},
 												"sipSettings": {
 													"authentication": {
@@ -2106,8 +2233,10 @@
 													},
 													"callType": "register-basic-call-mo",
 													"customHeaders": [],
+													"customParameters": [],
 													"domainName": "keysight.com",
 													"dstIP": "20.0.7.10",
+													"dstIPIncrement": "0.0.0.0",
 													"dstPhoneIncrement": 1,
 													"dstPhoneURI": "10000001000",
 													"dstPort": 5060,
@@ -2126,6 +2255,7 @@
 								],
 								"trafficFlows": [
 									{
+										"delay": 0,
 										"direction": "uplink",
 										"dnnId": "1",
 										"dstPort": 4321,
@@ -2178,7 +2308,7 @@
 										"createDeletePDUSessionList": [
 											{
 												"delay": 0,
-												"dnnIdsToActivate": null,
+												"dnnIdsToActivate": [],
 												"id": "1",
 												"interval": 1,
 												"maxOutstanding": 100,
@@ -2232,12 +2362,11 @@
 										"enable": false,
 										"forceN2": false,
 										"maxOutstanding": 100,
+										"mobilityForState": "connected",
 										"onlyOnce": false,
 										"rate": 1,
 										"type": "handover",
-										"visitedGNBs": [
-											"1"
-										]
+										"visitedNodes": []
 									},
 									"paging": {
 										"delay": 1,
@@ -2246,7 +2375,6 @@
 										"onlyOnce": false,
 										"rate": 1,
 										"trafficControl": {
-											"port": 44556,
 											"remote": "20.0.30.10",
 											"suspendTrafficInterval": 1
 										},
@@ -2309,6 +2437,11 @@
 									"value": "10000001000"
 								}
 							},
+							"parentRan": {
+								"id": "",
+								"nodeId": "1",
+								"secondaryNodeId": "-1"
+							},
 							"policy": {
 								"am": {
 									"subscCats": [
@@ -2323,7 +2456,7 @@
 											],
 											"id": "1",
 											"snssai": {
-												"id": "",
+												"id": "1",
 												"mappedSD": 100,
 												"mappedSST": 10,
 												"sd": 1000,
@@ -2354,6 +2487,8 @@
 							"settings": {
 								"activeTime": 5,
 								"authenticateDuringMobilityRegistration": "never",
+								"authenticateDuringRegistrationWithGUTI": false,
+								"checkAUTN": false,
 								"defaultNssai": [
 									{
 										"id": "1",
@@ -2364,11 +2499,29 @@
 									}
 								],
 								"delayBeforeDeregister": 0,
+								"delayBeforeHandoverNotify": 0,
 								"delayBeforeIndirectForwardingCleanup": 5000,
 								"delayBeforePDUSessionCreate": 0,
 								"deregistrationSwitchOff": true,
 								"dnnsConfig": [
 									{
+										"alternateSessionId": 8,
+										"authentication": {
+											"chap": {
+												"secret": "secret",
+												"user": ""
+											},
+											"eapttls": {
+												"clientCertificate": "MIID5jCCA0+gAwIBAgIJAL4iLHDedYYTMA0GCSqGSIb3DQEBBQUAMIGpMQswCQYDVQQGEwJSTzELMAkGA1UECBMCQlUxEjAQBgNVBAcTCUJ1Y2hhcmVzdDEXMBUGA1UEChMOaHlwZXJtYWdpay5jb20xEzARBgNVBAsTCkh5cGVybWFnaUsxEzARBgNVBAMTCkh5cGVybWFnaUsxEzARBgNVBCkTCkh5cGVybWFnaUsxITAfBgkqhkiG9w0BCQEWEnJzYUBoeXBlcm1hZ2lrLmNvbTAeFw0xMzExMjUxNDU2MTVaFw0yMzExMjMxNDU2MTVaMIGpMQswCQYDVQQGEwJSTzELMAkGA1UECBMCQlUxEjAQBgNVBAcTCUJ1Y2hhcmVzdDEXMBUGA1UEChMOaHlwZXJtYWdpay5jb20xEzARBgNVBAsTCkh5cGVybWFnaUsxEzARBgNVBAMTCkh5cGVybWFnaUsxEzARBgNVBCkTCkh5cGVybWFnaUsxITAfBgkqhkiG9w0BCQEWEnJzYUBoeXBlcm1hZ2lrLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAy2F1e+kgct4adVk78chK1R8Ju5SZ3hhexCC2XqL0tLDNhInTCn2D4y3eQW1wbsdaOW16zmyoEPr2kqbUjdXwiSB20Mo/X8dVskqpOmD+Bho5/I01dMwVtq5WVEGwmAdFKl6vggWnPwfxdxmsC/lFJjk5gG5g87YHIFV5hl28bAUCAwEAAaOCARIwggEOMB0GA1UdDgQWBBT+Y4/rRVJKmOMAGbfAL0xH0jtNuzCB3gYDVR0jBIHWMIHTgBT+Y4/rRVJKmOMAGbfAL0xH0jtNu6GBr6SBrDCBqTELMAkGA1UEBhMCUk8xCzAJBgNVBAgTAkJVMRIwEAYDVQQHEwlCdWNoYXJlc3QxFzAVBgNVBAoTDmh5cGVybWFnaWsuY29tMRMwEQYDVQQLEwpIeXBlcm1hZ2lLMRMwEQYDVQQDEwpIeXBlcm1hZ2lLMRMwEQYDVQQpEwpIeXBlcm1hZ2lLMSEwHwYJKoZIhvcNAQkBFhJyc2FAaHlwZXJtYWdpay5jb22CCQC+Iixw3nWGEzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBACCv4/AUa5Yog09LokotidE46dW7nhwtqscTvxzBFZdMoxNy/K6GqI6QEioYWQSSntuGBVR2nAIqXN6sSZQAITRthFNh75vzAMhF71Jy+kTMqt9RHX34KISmC6OuMcXbgBsIV61LSCjsFcBh2rEPJgL894/aLmtkIsgwxbNlCo2y",
+												"password": "secret",
+												"tunneledAuthenticationMethod": "chap"
+											},
+											"pap": {
+												"password": "secret",
+												"user": ""
+											},
+											"type": "no_auth"
+										},
 										"dnnID": "1",
 										"id": "1",
 										"ipAddress": {
@@ -2381,13 +2534,15 @@
 											"value": "3000:B::1"
 										},
 										"ipv6Prefix": 64,
+										"sessionId": 1,
 										"snssai": {
 											"enable": false,
 											"forceConfigured": false,
 											"ueNssai": {
 												"peerId": "1"
 											}
-										}
+										},
+										"sscMode": "ssc-mode-1"
 									}
 								],
 								"emergencyRegistrationIdentityType": "suci",
@@ -2404,6 +2559,7 @@
 								],
 								"forceEmergencyRegistration": false,
 								"forceIdentificationDuringRegistration": false,
+								"includeUEContextRequest": true,
 								"ipAddressIncrement": "1",
 								"micoAllowed": false,
 								"nssai": [
@@ -2444,7 +2600,7 @@
 										],
 										"id": "1",
 										"snssai": {
-											"id": "",
+											"id": "1",
 											"mappedSD": 100,
 											"mappedSST": 10,
 											"sd": 1000,
@@ -2452,7 +2608,6 @@
 										}
 									}
 								],
-								"sscMode": "ssc-mode-1",
 								"subsRegTimer": 5,
 								"subscribedAMBR": {
 									"downlink": 1000,
@@ -2495,6 +2650,7 @@
 											"flows": [
 												{
 													"clientTxCount": 8,
+													"dataCustomParameters": [],
 													"dnnId": "1",
 													"enableDnsQueryPerConnection": false,
 													"flowId": "1",
@@ -2511,9 +2667,29 @@
 												}
 											],
 											"objectiveType": "throughput",
+											"simulatedUsers": 1,
 											"throughput": 1000
 										},
 										"delay": 0,
+										"dnsclient": {
+											"flows": [
+												{
+													"dnnId": "1",
+													"dnsCustomParameters": [],
+													"dnsServerIP": "20.0.6.10",
+													"flowId": "1",
+													"hostname": "media.keysight.com",
+													"id": "1",
+													"iterations": 0,
+													"numberOfDNSServers": 1,
+													"port": 53,
+													"queryType": "A",
+													"type": "dns-client"
+												}
+											],
+											"objectiveType": "simulated_users",
+											"transactionsRate": 10
+										},
 										"id": "1",
 										"mss": 1416,
 										"ott": {
@@ -2529,6 +2705,7 @@
 													"jbMaxSize": 500,
 													"maxTransactions": true,
 													"mos": "disabled",
+													"ottCustomParameters": [],
 													"percentage": 100,
 													"playDuration": 60,
 													"playUntilEnd": false,
@@ -2554,7 +2731,8 @@
 													"url": "undefined"
 												}
 											],
-											"objectiveType": "simulated_users"
+											"objectiveType": "simulated_users",
+											"throughput": 0
 										},
 										"type": "voice",
 										"voice": {
@@ -2587,7 +2765,8 @@
 													"enableOWD": false,
 													"enableRTCP": false,
 													"enableSRTP": false,
-													"localPort": 10000
+													"localPort": 10000,
+													"localPortIncrement": 0
 												},
 												"sipSettings": {
 													"authentication": {
@@ -2597,14 +2776,17 @@
 														"opOrOPc": "op",
 														"opc": "112233445566778899AABBCCDDEEFF00",
 														"opcIncrement": "0",
+														"password": "",
 														"type": "proxy-defined",
 														"useUeRangeSecurity": true,
-														"username": ""
+														"username": "22604000000042@keysight"
 													},
 													"callType": "register-basic-call-mt",
 													"customHeaders": [],
+													"customParameters": [],
 													"domainName": "keysight.com",
 													"dstIP": "20.0.7.10",
+													"dstIPIncrement": "0.0.0.0",
 													"dstPhoneIncrement": 1,
 													"dstPhoneURI": "10000000000",
 													"dstPort": 5060,
@@ -2623,6 +2805,7 @@
 								],
 								"trafficFlows": [
 									{
+										"delay": 0,
 										"direction": "uplink",
 										"dnnId": "1",
 										"dstPort": 4321,
@@ -2701,13 +2884,21 @@
 									"connectivitySettings": {
 										"firstVLAN": {
 											"enable": false,
-											"idStart": 0
+											"idStart": 0,
+											"tpid": "h8100"
 										},
+										"gwIncrement": "0.0.0.0",
+										"gwStart": "0.0.0.0",
 										"ipPrefix": 16,
 										"localIPAddress": "20.0.60.10",
+										"macIncrement": "000000000001",
+										"macStart": "0099FF000001",
+										"mss": 1460,
+										"mtu": 1500,
 										"secondVLAN": {
 											"enable": false,
-											"idStart": 0
+											"idStart": 0,
+											"tpid": "h8100"
 										}
 									}
 								},
@@ -2752,45 +2943,22 @@
 					}
 				}
 			},
-			"version": "2.1.0-932"
+			"version": "2.3.0-3272-252"
 		},
 		"ConfigType": "Full Core",
-		"Created": 1619104972,
+		"Created": 1647971085,
 		"IRATConfig": null,
-		"LastAccessed": 1619448895,
-		"Name": "FullCore-IMS-10UEs-MO-MT-S11-EPS-Fallback 4963",
-		"OwnerID": "6d3d49a6-2e80-4467-b422-c5c727f3f739",
+		"LastAccessed": 1647971085,
+		"LicenseType": "",
+		"Name": "FullCore-IMS-10UEs-MO-MT-S11-EPS-Fallback",
+		"OwnerID": "68d50bbf-1c39-4ad0-a1cb-c957710b2794",
+		"RICConfig": null,
 		"SBAConfig": null,
 		"UpfIsolationConfig": null,
-		"id": "wireless-119",
-		"links": [
-			{
-				"href": "/api/v2/configs/wireless-119",
-				"method": "GET",
-				"rel": "self",
-				"type": "self"
-			},
-			{
-				"href": "/api/v2/configs/wireless-119/$options",
-				"method": "GET",
-				"rel": "meta",
-				"type": "meta"
-			}
-		],
-		"owner": ""
+		"id": "wireless-4199",
+		"owner": "admin@example.org"
 	},
-	"links": [
-		{
-			"rel": "self",
-			"type": "self",
-			"method": "GET",
-			"href": "/api/v2/configs/wireless-119"
-		},
-		{
-			"rel": "meta",
-			"type": "meta",
-			"method": "GET",
-			"href": "/api/v2/configs/wireless-119/$options"
-		}
-	]
+	"application": "",
+	"encodedFiles": false,
+	"linkedResources": null
 }
