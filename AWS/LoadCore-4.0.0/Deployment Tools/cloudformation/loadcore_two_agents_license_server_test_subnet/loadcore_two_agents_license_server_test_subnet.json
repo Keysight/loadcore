@@ -1,0 +1,1255 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "LoadCore CloudFormation",
+    "Mappings": {
+        "RegionMap": {
+            "eu-north-1": {
+                "AMIAgent": "ami-008adff922ee1c382",
+                "AMILoadCore": "ami-054395e0176626d5e",
+                "AMILicensing": "ami-0bd0e6d7bdb0ebd8c"
+            },
+            "ap-south-1": {
+                "AMIAgent": "ami-0a21ad9025de7e78a",
+                "AMILoadCore": "ami-00908dca8086f1fa7",
+                "AMILicensing": "ami-07e12a484fd189d69"
+            },
+            "eu-west-3": {
+                "AMIAgent": "ami-07573302ffcb5f5af",
+                "AMILoadCore": "ami-028f66bb0a15efb72",
+                "AMILicensing": "ami-0c9a946e4d195f6f0"
+            },
+            "eu-west-2": {
+                "AMIAgent": "ami-0dfb2119149daed03",
+                "AMILoadCore": "ami-075e6b34c28f59178",
+                "AMILicensing": "ami-07e138d39009fdd24"
+            },
+            "eu-west-1": {
+                "AMIAgent": "ami-066318d73167dfc12",
+                "AMILoadCore": "ami-0b2ccc80e84ff81f7",
+                "AMILicensing": "ami-08462661a2ee36793"
+            },
+            "ap-northeast-2": {
+                "AMIAgent": "ami-08a48d127fd55eb87",
+                "AMILoadCore": "ami-0a94ae0747661f3b7",
+                "AMILicensing": "ami-07b839f132107c4b7"
+            },
+            "ap-northeast-1": {
+                "AMIAgent": "ami-006ef162980f6eba6",
+                "AMILoadCore": "ami-0a986c737495bab58",
+                "AMILicensing": "ami-04d6417168d080ccd"
+            },
+            "sa-east-1": {
+                "AMIAgent": "ami-08ce6282d96d0942a",
+                "AMILoadCore": "ami-0cdfe40a7221e0395",
+                "AMILicensing": "ami-0aae23313ea529eff"
+            },
+            "ca-central-1": {
+                "AMIAgent": "ami-0227bad21e4bc6765",
+                "AMILoadCore": "ami-0d9c9b83a02c56a23",
+                "AMILicensing": "ami-0ac93ea2a548b7973"
+            },
+            "ap-southeast-1": {
+                "AMIAgent": "ami-0d2d1a20030b4b6a9",
+                "AMILoadCore": "ami-015b32e356096ccf8",
+                "AMILicensing": "ami-0703a1de8d5ab696d"
+            },
+            "ap-southeast-2": {
+                "AMIAgent": "ami-044b6b1c44ebb57ad",
+                "AMILoadCore": "ami-06e3a8518f7261015",
+                "AMILicensing": "ami-0a9ad1585234c33e3"
+            },
+            "eu-central-1": {
+                "AMIAgent": "ami-0a7e3ad4a3515fa27",
+                "AMILoadCore": "ami-0a382fb6bd2d894a8",
+                "AMILicensing": "ami-04edaaa90bd32db18"
+            },
+            "us-east-1": {
+                "AMIAgent": "ami-099cb1114b314d26a",
+                "AMILoadCore": "ami-0a740ae09df028928",
+                "AMILicensing": "ami-07ed26b6d721d7ba9"
+            },
+            "us-east-2": {
+                "AMIAgent": "ami-06e13ef51d4695f97",
+                "AMILoadCore": "ami-06729b67c524331d0",
+                "AMILicensing": "ami-0473edb0e2ebb0aff"
+            },
+            "us-west-1": {
+                "AMIAgent": "ami-05e09656503e573c1",
+                "AMILoadCore": "ami-043b039528721bd99",
+                "AMILicensing": "ami-06bb4ea6d41a12390"
+            },
+            "us-west-2": {
+                "AMIAgent": "ami-0dd35136882d45d11",
+                "AMILoadCore": "ami-08463cab513ff6378",
+                "AMILicensing": "ami-0ae8fa8fb8f7168ff"
+            }
+        },
+        "VariableMap": {
+            "global": {
+                "MgmtAgentInterfaceName": "eth0",
+                "TestAgentInterfaceName": "eth1",
+                "InstanceShutdownBehavior": "stop",
+                "InstanceBlockDeviceName": "/dev/sda1",
+                "InstanceEbsDeleteOnTermination": "true",
+                "InstanceEbsVolumeType": "gp2",
+                "LoadCoreVersion": "LoadCore3.4.0",
+                "TestSubnetCidrBlock": "20.0.0.0/16",
+                "Agent1PrivateIPAddresses": "20.0.4.12,20.0.4.13,20.0.4.14,20.0.4.15,20.0.4.16,20.0.4.17,20.0.4.18,20.0.4.19,20.0.4.20,20.0.4.21",
+                "Agent2PrivateIPAddresses": "20.0.5.12,20.0.5.13,20.0.5.14,20.0.5.15,20.0.5.16,20.0.5.17,20.0.5.18,20.0.5.19,20.0.5.20,20.0.5.21"
+            }
+        }
+    },
+    "Resources": {
+        "VpcCidrBlock": {
+            "Type": "AWS::EC2::VPCCidrBlock",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "CidrBlock": {
+                    "Fn::FindInMap": [
+                        "VariableMap",
+                        "global",
+                        "TestSubnetCidrBlock"
+                    ]
+                }
+            }
+        },
+        "TestSubnet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "CidrBlock": {
+                    "Fn::FindInMap": [
+                        "VariableMap",
+                        "global",
+                        "TestSubnetCidrBlock"
+                    ]
+                },
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "Tags": [
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ]
+            }
+        },
+        "ClusterMgmtNet": {
+            "Type": "AWS::EC2::NetworkInterface",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "MgmtSubnet"
+                },
+                "GroupSet": [
+                    {
+                        "Ref": "SecurityGroupForMgmt"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ]
+            }
+        },
+        "Agent1MgmtNet": {
+            "Type": "AWS::EC2::NetworkInterface",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "MgmtSubnet"
+                },
+                "GroupSet": [
+                    {
+                        "Ref": "SecurityGroupForMgmt"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ]
+            }
+        },
+        "Agent2MgmtNet": {
+            "Type": "AWS::EC2::NetworkInterface",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "MgmtSubnet"
+                },
+                "GroupSet": [
+                    {
+                        "Ref": "SecurityGroupForMgmt"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ]
+            }
+        },
+        "LicensingMgmtNet": {
+            "Type": "AWS::EC2::NetworkInterface",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "MgmtSubnet"
+                },
+                "GroupSet": [
+                    {
+                        "Ref": "SecurityGroupForMgmt"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ]
+            }
+        },
+        "Agent1TestNet": {
+            "Type": "AWS::EC2::NetworkInterface",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "TestSubnet"
+                },
+                "GroupSet": [
+                    {
+                        "Ref": "SecurityGroupForTest"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ],
+                "PrivateIpAddress": {
+                    "Fn::Select": [
+                        "0",
+                        {
+                            "Fn::Split": [
+                                ",",
+                                {
+                                    "Fn::FindInMap": [
+                                        "VariableMap",
+                                        "global",
+                                        "Agent1PrivateIPAddresses"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PrivateIpAddresses": [
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "1",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "2",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "3",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "4",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "5",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "6",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "7",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "8",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "9",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent1PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    }
+                ]
+            }
+        },
+        "Agent2TestNet": {
+            "Type": "AWS::EC2::NetworkInterface",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "TestSubnet"
+                },
+                "GroupSet": [
+                    {
+                        "Ref": "SecurityGroupForTest"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ],
+                "PrivateIpAddress": {
+                    "Fn::Select": [
+                        "0",
+                        {
+                            "Fn::Split": [
+                                ",",
+                                {
+                                    "Fn::FindInMap": [
+                                        "VariableMap",
+                                        "global",
+                                        "Agent2PrivateIPAddresses"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PrivateIpAddresses": [
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "1",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "2",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "3",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "4",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "5",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "6",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "7",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "8",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    },
+                    {
+                        "PrivateIpAddress": {
+                            "Fn::Select": [
+                                "9",
+                                {
+                                    "Fn::Split": [
+                                        ",",
+                                        {
+                                            "Fn::FindInMap": [
+                                                "VariableMap",
+                                                "global",
+                                                "Agent2PrivateIPAddresses"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Primary": false
+                    }
+                ]
+            }
+        },
+        "ClusterDeployment": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": {
+                    "Ref": "KeyPair"
+                },
+                "ImageId": {
+                    "Fn::FindInMap": [
+                        "RegionMap",
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "AMILoadCore"
+                    ]
+                },
+                "InstanceType": {
+                    "Ref": "ClusterInstanceType"
+                },
+                "NetworkInterfaces": [
+                    {
+                        "NetworkInterfaceId": {
+                            "Ref": "ClusterMgmtNet"
+                        },
+                        "DeviceIndex": "0"
+                    }
+                ],
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": {
+                            "Fn::FindInMap": [
+                                "VariableMap",
+                                "global",
+                                "InstanceBlockDeviceName"
+                            ]
+                        },
+                        "Ebs": {
+                            "DeleteOnTermination": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsDeleteOnTermination"
+                                ]
+                            },
+                            "VolumeType": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsVolumeType"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    {
+                                        "Fn::FindInMap": [
+                                            "VariableMap",
+                                            "global",
+                                            "LoadCoreVersion"
+                                        ]
+                                    },
+                                    "MW"
+                                ]
+                            ]
+                        }
+                    },
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ]
+            }
+        },
+        "ClusterMgmtElasticIp": {
+            "Type": "AWS::EC2::EIP",
+            "Properties": {
+                "Domain": "vpc"
+            }
+        },
+        "ClusterMgmtElasticIpAssociation": {
+            "Type": "AWS::EC2::EIPAssociation",
+            "Properties": {
+                "AllocationId": {
+                    "Fn::GetAtt": [
+                        "ClusterMgmtElasticIp",
+                        "AllocationId"
+                    ]
+                },
+                "NetworkInterfaceId": {
+                    "Ref": "ClusterMgmtNet"
+                }
+            },
+            "DependsOn": "ClusterDeployment"
+        },
+        "Agent1Deployment": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": {
+                    "Ref": "KeyPair"
+                },
+                "ImageId": {
+                    "Fn::FindInMap": [
+                        "RegionMap",
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "AMIAgent"
+                    ]
+                },
+                "InstanceType": {
+                    "Ref": "AgentsInstanceType"
+                },
+                "NetworkInterfaces": [
+                    {
+                        "NetworkInterfaceId": {
+                            "Ref": "Agent1MgmtNet"
+                        },
+                        "DeviceIndex": "0"
+                    },
+                    {
+                        "NetworkInterfaceId": {
+                            "Ref": "Agent1TestNet"
+                        },
+                        "DeviceIndex": "1"
+                    }
+                ],
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": {
+                            "Fn::FindInMap": [
+                                "VariableMap",
+                                "global",
+                                "InstanceBlockDeviceName"
+                            ]
+                        },
+                        "Ebs": {
+                            "DeleteOnTermination": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsDeleteOnTermination"
+                                ]
+                            },
+                            "VolumeType": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsVolumeType"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    {
+                                        "Fn::FindInMap": [
+                                            "VariableMap",
+                                            "global",
+                                            "LoadCoreVersion"
+                                        ]
+                                    },
+                                    "Agent1"
+                                ]
+                            ]
+                        }
+                    },
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ],
+                "UserData": {
+                    "Fn::Base64": {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "#!/bin/bash\n",
+                                {
+                                    "Fn::Sub": [
+                                        "/bin/bash /home/ixia/agent-setup.sh ${ClusterDeployment.PrivateIp} ${MgmtAgentInterfaceName} ${TestAgentInterfaceName} y",
+                                        {
+                                            "MgmtAgentInterfaceName": {
+                                                "Fn::FindInMap": [
+                                                    "VariableMap",
+                                                    "global",
+                                                    "MgmtAgentInterfaceName"
+                                                ]
+                                            },
+                                            "TestAgentInterfaceName": {
+                                                "Fn::FindInMap": [
+                                                    "VariableMap",
+                                                    "global",
+                                                    "TestAgentInterfaceName"
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "\n"
+                            ]
+                        ]
+                    }
+                }
+            }
+        },
+        "Agent2Deployment": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": {
+                    "Ref": "KeyPair"
+                },
+                "ImageId": {
+                    "Fn::FindInMap": [
+                        "RegionMap",
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "AMIAgent"
+                    ]
+                },
+                "InstanceType": {
+                    "Ref": "AgentsInstanceType"
+                },
+                "NetworkInterfaces": [
+                    {
+                        "NetworkInterfaceId": {
+                            "Ref": "Agent2MgmtNet"
+                        },
+                        "DeviceIndex": "0"
+                    },
+                    {
+                        "NetworkInterfaceId": {
+                            "Ref": "Agent2TestNet"
+                        },
+                        "DeviceIndex": "1"
+                    }
+                ],
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": {
+                            "Fn::FindInMap": [
+                                "VariableMap",
+                                "global",
+                                "InstanceBlockDeviceName"
+                            ]
+                        },
+                        "Ebs": {
+                            "DeleteOnTermination": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsDeleteOnTermination"
+                                ]
+                            },
+                            "VolumeType": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsVolumeType"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    {
+                                        "Fn::FindInMap": [
+                                            "VariableMap",
+                                            "global",
+                                            "LoadCoreVersion"
+                                        ]
+                                    },
+                                    "Agent2"
+                                ]
+                            ]
+                        }
+                    },
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ],
+                "UserData": {
+                    "Fn::Base64": {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "#!/bin/bash\n",
+                                {
+                                    "Fn::Sub": [
+                                        "/bin/bash /home/ixia/agent-setup.sh ${ClusterDeployment.PrivateIp} ${MgmtAgentInterfaceName} ${TestAgentInterfaceName} y",
+                                        {
+                                            "MgmtAgentInterfaceName": {
+                                                "Fn::FindInMap": [
+                                                    "VariableMap",
+                                                    "global",
+                                                    "MgmtAgentInterfaceName"
+                                                ]
+                                            },
+                                            "TestAgentInterfaceName": {
+                                                "Fn::FindInMap": [
+                                                    "VariableMap",
+                                                    "global",
+                                                    "TestAgentInterfaceName"
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "\n"
+                            ]
+                        ]
+                    }
+                }
+            }
+        },
+        "LicensingDeployment": {
+            "Type": "AWS::EC2::Instance",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "KeyName": {
+                    "Ref": "KeyPair"
+                },
+                "ImageId": {
+                    "Fn::FindInMap": [
+                        "RegionMap",
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "AMILicensing"
+                    ]
+                },
+                "InstanceType": {
+                    "Ref": "LicensingInstanceType"
+                },
+                "NetworkInterfaces": [
+                    {
+                        "NetworkInterfaceId": {
+                            "Ref": "LicensingMgmtNet"
+                        },
+                        "DeviceIndex": "0"
+                    }
+                ],
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": {
+                            "Fn::FindInMap": [
+                                "VariableMap",
+                                "global",
+                                "InstanceBlockDeviceName"
+                            ]
+                        },
+                        "Ebs": {
+                            "DeleteOnTermination": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsDeleteOnTermination"
+                                ]
+                            },
+                            "VolumeType": {
+                                "Fn::FindInMap": [
+                                    "VariableMap",
+                                    "global",
+                                    "InstanceEbsVolumeType"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    {
+                                        "Fn::FindInMap": [
+                                            "VariableMap",
+                                            "global",
+                                            "LoadCoreVersion"
+                                        ]
+                                    },
+                                    "Licensing"
+                                ]
+                            ]
+                        }
+                    },
+                    {
+                        "Key": "Owner",
+                        "Value": {
+                            "Ref": "UserEmail"
+                        }
+                    }
+                ]
+            }
+        },
+        "TestIngress": {
+            "Type": "AWS::EC2::SecurityGroupIngress",
+            "Properties": {
+                "GroupId": {
+                    "Ref": "SecurityGroupForTest"
+                },
+                "IpProtocol": "-1",
+                "CidrIp": {
+                    "Fn::FindInMap": [
+                        "VariableMap",
+                        "global",
+                        "TestSubnetCidrBlock"
+                    ]
+                }
+            }
+        }
+    },
+    "Metadata": {
+        "AWS::CloudFormation::Interface": {
+            "ParameterGroups": [
+                {
+                    "Label": {
+                        "default": "User Configuration"
+                    },
+                    "Parameters": [
+                        "UserEmail"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "EC2 Configuration"
+                    },
+                    "Parameters": [
+                        "ClusterInstanceType",
+                        "AgentsInstanceType",
+                        "LicensingInstanceType",
+                        "KeyPair"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Network Configuration"
+                    },
+                    "Parameters": [
+                        "VPC",
+                        "MgmtSubnet",
+                        "SecurityGroupForMgmt",
+                        "SecurityGroupForTest"
+                    ]
+                }
+            ],
+            "ParameterLabels": {
+                "UserEmail": {
+                    "default": "User email"
+                },
+                "ClusterInstanceType": {
+                    "default": "Instance type of LoadCore"
+                },
+                "AgentsInstanceType": {
+                    "default": "Instance type of LoadCore Agents"
+                },
+                "LicensingInstanceType": {
+                    "default": "Instance type of LoadCore Licensing"
+                },
+                "KeyPair": {
+                    "default": "Key Name"
+                },
+                "VPC": {
+                    "default": "VPC for creating a test subnet"
+                },
+                "MgmtSubnet": {
+                    "default": "Management Subnet"
+                },
+                "SecurityGroupForMgmt": {
+                    "default": "Security group for management subnet"
+                },
+                "SecurityGroupForTest": {
+                    "default": "Security group for test subnet"
+                }
+            }
+        }
+    },
+    "Parameters": {
+        "UserEmail": {
+            "Description": "Email address of user creating the stack",
+            "Type": "String"
+        },
+        "ClusterInstanceType": {
+            "Description": "Supported instance types",
+            "Type": "String",
+            "AllowedValues": [
+                "c5.9xlarge",
+                "c5.4xlarge",
+                "c5.2xlarge",
+                "c4.8xlarge",
+                "c4.4xlarge",
+                "c4.2xlarge",
+                "m5.xlarge",
+                "t2.2xlarge"
+            ],
+            "Default": "c4.2xlarge"
+        },
+        "AgentsInstanceType": {
+            "Description": "Supported instance types",
+            "Type": "String",
+            "AllowedValues": [
+                "c5.9xlarge",
+                "c5.4xlarge",
+                "c5.2xlarge",
+                "c5.xlarge",
+                "c4.8xlarge",
+                "c4.4xlarge",
+                "c4.2xlarge",
+                "c4.xlarge",
+                "m5.xlarge",
+                "t2.xlarge"
+            ],
+            "Default": "c5.2xlarge"
+        },
+        "LicensingInstanceType": {
+            "Description": "Supported instance types",
+            "Type": "String",
+            "AllowedValues": [
+                "t2.medium"
+            ],
+            "Default": "t2.medium"
+        },
+        "VPC": {
+            "Description": "VPC IDs",
+            "Type": "AWS::EC2::VPC::Id"
+        },
+        "MgmtSubnet": {
+            "Description": "Subnet IDs",
+            "Type": "AWS::EC2::Subnet::Id"
+        },
+        "SecurityGroupForMgmt": {
+            "Description": "SG IDs",
+            "Type": "AWS::EC2::SecurityGroup::Id"
+        },
+        "SecurityGroupForTest": {
+            "Description": "SG IDs",
+            "Type": "AWS::EC2::SecurityGroup::Id"
+        },
+        "KeyPair": {
+            "Description": "Name of the existing EC2 Key Pair",
+            "Type": "AWS::EC2::KeyPair::KeyName"
+        }
+    },
+    "Outputs": {
+        "LoadCore": {
+            "Description": "The LoadCore UI IP address",
+            "Value": {
+                "Fn::Join": [
+                    "",
+                    [
+                        "https://",
+                        {
+                            "Fn::GetAtt": [
+                                "ClusterDeployment",
+                                "PublicIp"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        }
+    }
+}
