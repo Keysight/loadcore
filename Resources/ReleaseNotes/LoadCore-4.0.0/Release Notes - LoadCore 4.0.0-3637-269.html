@@ -1,0 +1,977 @@
+<HTML>
+<TITLE>
+    LoadCore Software Release Notes : LoadCore 4.0 : Build Number: 4.0.0-3637-269 (Dec 2022)
+</TITLE>
+<STYLE>
+    body {
+        font-family: Calibri, Serif;
+        padding-left: 40px;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin: 12pt 0 18pt;
+    }
+
+    table th {
+        background-color: #badce6;
+    }
+
+    table,
+    td,
+    th {
+        border: 1px solid #bebebe;
+        padding: 1.5pt 2.5pt 2.5pt;
+    }
+
+    pre {
+        font-family: Calibri, Serif;
+    }
+
+    .knownIssuesListCssClass th {
+        background-color: #cfd4d8;
+        color: #000;
+    }
+
+    .whatsNewNoteCssClass th {
+        background-color: #37b0c9;
+        color: #fff;
+        padding: 4pt;
+    }
+
+    .whatsNewNoteCssClass td {
+        padding: 3pt;
+    }
+
+    .resolvedDefectsListCssClass th {
+        background-color: #81ab5d;
+        color: #fff;
+    }
+
+    .whatsNewNoteCssClass table {
+        width: 50%;
+    }
+
+    .resolvedDefectsListCssClass table {
+        width: 50%;
+    }
+
+    .knownIssuesListCssClass table {
+        width: 50%;
+    }
+
+    .knownIssuesListCssClass tt {
+        font-family: Calibri, Serif;
+    }
+
+    .whatsNewNoteCssClass tt {
+        font-family: Calibri, Serif;
+    }
+
+    .resolvedDefectsListCssClass tt {
+        font-family: Calibri, Serif;
+    }
+
+    .outerTable {
+        border: none;
+    }
+
+    .outerTable td {
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+    }
+
+    .innerTable td {
+        border: 1px solid #bebebe;
+    }
+</STYLE>
+
+<BODY>
+    <CENTER>
+        <H1>
+            LoadCore Software Release Notes
+            <BR>
+            Build Number: 4.0.0-3637-269 (Dec 2022)
+        </H1>
+    </CENTER>
+
+    <UL>
+        <LI><A HREF="#About This Release">About This Release</A></LI>
+        <LI><A HREF="#What's New in This Release">What's New in This Release</A></LI>
+        <LI><A HREF="#Supported platforms">Supported platforms</A></LI>
+        <LI><A HREF="#Fixed in This Release">Fixed in This Release</A></LI>
+        <LI><A HREF="#Installation Notes">Installation Notes</A></LI>
+        <LI><A HREF="#Additional Documentation">Additional Documentation</A></LI>
+        <LI><A HREF="#Known Limitations">Known Limitations</A></LI>
+        <LI><A HREF="#How to Report Problems">How to Report Problems</A></LI>
+    </UL>
+    <BR>
+
+    <HR>
+    <H2><A NAME="About This Release">About This Release</A></H2>
+	LoadCore 4.0 is the next step in the product evolution focused mainly on consolidating CoreSIM.
+	<BR>
+	With this release LoadCore continues to expand in depth and in breadth in the cloud area, being validated in Oracle Cloud and Azure AKS.
+    	<BR>	
+	Negative testing capabilities have been added for the SBI nodes with the SBI fuzzer.
+	<BR>
+	On control plane the main addition is IPsec supporton the N2 and N3 interfaces, and countless other enhancements.
+	<BR>
+	In the user plane area, the most important addition is Capture Replay plus a lot of depth in the Video & Voice areas (e.g. Dash, Netflix)
+
+
+    <BR><BR>
+
+    <HR>
+    <H2><A NAME="What's New in This Release">What's New in This Release</A></H2>
+    <div class="whatsNewNoteCssClass">
+        <H3>Application infrastructure</H3>
+        <UL>
+            <LI>Upgrading agents via update tar</LI>
+            <LI>Oracle Cloud support (OKE, VMs)</LI>
+            <LI>Licensing usage report</LI>
+            <LI>Added filtering support for per UE stats</LI>
+            <LI>Per UE stats capacity improvements</LI>
+            <LI>Azure AKS support</LI>
+            <LI>New SCAS tests (SMF 4.2.2.1.1 , UPF 2.6, NEF 4.2.2.1.1)</LI>
+            <LI>License server now supports IxLoad</LI>
+        </UL>
+
+        <H3>CoreSim</H3>
+        <UL>
+            <LI>IPsec support for N2 and N3 interfaces</LI>
+            <LI>4G support</LI>
+            <LI>IRAT handover with N26 interface (both in connected and idle)</LI>
+            <LI>Beta version for EPS fallback support with AN release and redirection</LI>
+            <LI>NSA option 3x</LI>
+            <LI>4G PAP/CHAP authentication support</LI>
+            <LI>Error causes for NAS, 5G-NAS, S1AP and NGAP procedures</LI>
+            <LI>Support option 3x in case of EPS fallback scenario</LI>
+            <LI>Dual Connectivity on NR support</LI>
+			<LI>Paging with timer</LI>
+			<LI>Beta version of paging storm (both 4G and 5G): retransimt Paging to same UE 'n times’</LI>
+            <LI>4G UE radio capability</LI>
+            <LI>5G UE radio capability</LI>
+            <LI>5G Public Warning System and ETWS support</LI>
+            <LI>SMF initiated session release (5G SA registration and deregistration of single UE)</LI>
+            <LI>AMF Initiated Deregistration (Registration and deregistration to a single/multiple network slices)</LI>
+            <LI>AMF Initiated UE Context Release</LI>
+            <LI>User Plane security policy</LI>
+            <LI>AMF load balancing feature using relative AMF capacity(RAC)</LI>
+            <LI>MME load balancing</LI>
+            <LI>TUAK authentication algorithm</LI>
+            <LI>ServiceRequest in CM-Connected state after specified time</LI>
+            <LI>Application traffic support with NSA option 3x and 5G dual connectivity on NR</LI>
+            <LI>Resource optimisations for voice calls by running IMS and Media Function on the same agent as CoreSim</LI>
+            <LI>Support for enter/exit idle secondary objective along with application traffic for data flows</LI>
+            <LI>Support for network initiated QoS flows configured from global settings  </LI>
+        </UL>
+
+
+        <H3>5G core new nodes</H3>
+        <UL>
+            <LI>SBI Fuzzer</LI>
+        </UL>
+
+        <H3>5G core control plane</H3>
+        <UL>
+            <LI>NGRAN: IPsec support for N2 and N3 interfaces</LI>
+            <LI>Configurable Milenage constants for control plane</LI>
+            <LI>Additional routes can be configured on SBA interfaces, DN and SBI Fuzzer</LI>
+            <LI>NGRAN: TUAK authentication algorithm</LI>
+            <LI>NGRAN: AMF load balancing using relative AMF capacity(RAC)</LI>
+            <LI>NGRAN: MME load balancing</LI>
+            <LI bugid="FRA007658">NGRAN: ServiceRequest in CM-Connected state after specified time</LI>
+            <LI>NGRAN: Username option was added for secondary authentication EAP-TTLS</LI>
+            <LI>NGRAN: Send User Identity option was added for secondary authentication EAP-TTLS</LI>
+            <LI>RAN: 4G PAP/CHAP authentication support</LI>
+            <LI>RAN: Error causes were added for NAS, 5G-NAS, S1AP and NGAP procedures</LI>
+            <LI>User plane security policy support for Xn handover</LI>
+            <LI>NGRAN: Option to request P-CSCF IP address in ePCO IE</LI>
+            <LI>NGSetup and S1Setup rates can be lower than 1</LI>
+            <LI>SCTP configurable parameters</LI>
+            <LI>RAN: Support option 3x in case of EPS fallback scenario</LI>
+            <LI>NGRAN: Dual connectivity on NR</LI>
+            <LI>RAN: 4G UE Radio Capability Check Request/Response</LI>
+            <LI>NGRAN: 5G UE Radio Capability Check Request/Response</LI>
+			<LI>5G Public Warning System and ETWS support</LI>
+			<LI>RAN: configurable UE security capability</LI>
+			<LI>NGRAN: UE policy container can be added in Registration Request</LI>
+            <LI>UPF Isolation: PDI optimization support</LI>
+            <LI>SBA Tester: Discovery via NRF capability for discovering AUSF, CHF, NSSF, PCF, UDM</LI>
+            <LI>IPv4v6 support for passthrough </LI>
+            <LI>Full core: Beta version of EPS fallback support with AN release and redirection </LI>
+		    <LI>Reduce number of requested licenses for 4G scenarios (ignore 5G interfaces)</LI>
+            <LI>Listen on custom ports for all SBA ports and topologies</LI>
+            
+            
+        
+        </UL>
+
+
+        <H3>User plane</H3>
+        <UL>
+            <LI>Capture replay</LI>
+            <LI>ICMP client</LI>
+            <LI>Data browsing over QUIC and HTTP3</LI>
+            <LI>Video OTT DASH</LI>
+            <LI>Video OTT Netflix extensions</LI>
+            <LI>SIP subscribe and notify</LI>
+            <LI>HTTP custom headers</LI>
+            <LI>Sequence generator for SNI and URL</LI>
+            <LI>IPSec support on N3</LI>
+            <LI>Resource optimisations for voice calls by running IMS and Media Function on the same agent as CoreSim</LI>
+            <LI>Application traffic support with NSA option 3x and 5G dual connectivity on NR</LI>
+            <LI>Support for enter/exit idle secondary objective along with application traffic for data flows</LI>
+            <LI>Configurable Milenage constants for MO/MT voice calls on both UE and IMS</LI>
+            <LI>Support for S1-U and N3 on different NICs running IxStack</LI>
+            <LI>GTPu tunneled ICMP responses </LI>
+
+        </UL>
+
+        <H3>Other enhancements</H3>
+        <UL>
+            <LI>Agent hostname is now displayed in both agent assignment and agent management </LI>
+            <LI bugid="LOADCORE-2231">Different LoadCore agent hostnames after deployment </LI>
+            <LI bugid="LOADCORE-2520">Added FQDN in NF profile for NF NRF Registration in case HTTPS is used</LI>
+        </UL>
+
+    </div>
+    <HR>
+    <H2><A NAME="Supported Platforms">Supported Platforms</A></H2>
+    <H3>Virtual Environments</H3>
+    <table style="text-align: center">
+        <tr>
+            <th>Area</th>
+            <th>AliCloud</th>
+            <th>AWS</th>
+            <th>Azure</th>
+            <th>KVM</th>
+            <th>OpenStack</th>
+            <th>Oracle cloud</th>
+            <th>VMware ESX</th>
+        </tr>
+        <tr>
+            <td>Control Plane</td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+        </tr>
+        <tr>
+            <td>Stateless UDP</td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+        </tr>
+        <tr>
+            <td>Application Traffic</td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+        </tr>
+    </table>
+    <br>
+
+    <H3>Containerized Environments</H3>
+    <table style="text-align: center">
+        <tr>
+            <th>Area</th>
+			<th>AWS EKS</th>
+            <th>Azure AKS</th>
+            <th>Container agent</th>
+            <th>Google Anthos</th>
+            <th>Kubernetes</th>
+            <th>OpenShift</th>
+            <th>Oracle OKE</th>
+        </tr>
+        <tr>
+            <td>Control Plane</td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+        </tr>
+        <tr>
+            <td>Stateless UDP</td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+        </tr>
+        <tr>
+            <td>Application Traffic</td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+            <td><span>&#9989;</span></td>
+        </tr>
+    </table>
+    <br>
+
+    <H2><A NAME="System Recommendations">System Recommendations</A></H2>
+    <H3>Virtual Environments</H3>
+    <table style="text-align: center">
+        <tr>
+            <th>Area</th>
+            <th>AliCloud</th>
+            <th>AWS</th>
+            <th>Azure</th>
+            <th>KVM</th>
+            <th>OpenStack</th>
+            <th>Oracle Cloud</th>
+            <th>VMware ESX</th>
+
+        </tr>
+        <tr>
+            <td>Agent (control plane)</td>
+            <td>4 vCPUs, 4 GB RAM, 20 GB SSD</td>
+            <td>t2.xlarge, c4.xlarge and c5.xlarge</td>
+            <td>Standard F8s (8 vCPUs, 16 GB RAM)</td>
+            <td>4 vCPUs, 4 GB RAM, 20 GB SSD </td>
+            <td>4 vCPUs, 4 GB RAM, 20 GB SSD </td>
+	    <td></td>
+            <td>4 vCPUs, 4 GB RAM, 20 GB SSD </td>
+        </tr>
+        <tr>
+            <td>Agent (application traffic)</td>
+            <td>8 vCPUs, 32 GB RAM, 20 GB SSD </td>
+            <td>c4.xlarge, c5.xlarge</span></td>
+        <td>8 vCPUs, 32 GB RAM, 20 GB SSD</td>
+            <td>8 vCPUs, 32 GB RAM, 20 GB SSD </td>
+            <td>8 vCPUs, 32 GB RAM, 20 GB SSD </td>
+	    <td></td>
+            <td>8 vCPUs, 32 GB RAM, 20 GB SSD </td>
+        </tr>
+        <tr>
+            <td>Middleware</td>
+            <td>8 vCPUs, 16 GB RAM, 256 GB SSD </td>
+            <td>c5.2xlarge</td>
+            <td>Standard F8s (8 vCPUs, 16 GB RAM, 256 GB HDD)</td>
+            <td>8 vCPUs, 16 GB RAM, 256 GB SSD </td>
+            <td>8 vCPUs, 16 GB RAM, 256 GB SSD </td>
+	    <td></td>
+            <td>8 vCPUs, 16 GB RAM, 256 GB SSD</td>
+        </tr>
+        <tr>
+            <td>Licensing</td>
+            <td>2 vCPUs, 4 GB RAM, 256 GB SSD</td>
+            <td>t2.medium</td>
+            <td>Standard F4s (4 vCPUs, 8 GB RAM)</td>
+            <td>2 vCPUs, 4 GB RAM, 256 GB SSD</td>
+            <td>2 vCPUs, 4 GB RAM, 256 GB SSD</td>
+	    <td></td>
+            <td>2 vCPUs, 4 GB RAM, 256 GB SSD</td>
+        </tr>
+    </table>
+
+    <H3>Containerized Environments</H3>
+    <table style="text-align: center">
+        <tr>
+            <th>Area</th>
+	    <th>AWS EKS</th>
+            <th>Azure AKS</th>
+            <th>Container agent</th>
+            <th>Google Anthos</th>
+            <th>Kubernetes</th>
+            <th>OpenShift</th>
+            <th>Oracle OKE</th>
+        </tr>
+        <tr>
+            <td>Agent (control plane)</td>
+            <td>t2.xlarge, c4.xlarge, c5.xlarge (Ubuntu workers)</td>
+            <td></td>
+            <td>4 vCPUs, 8 GB RAM</td>
+            <td>e2-standard-16</td>
+            <td></td>
+            <td>4 vCPUs, 4 GB RAM, 20 GB SSD </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Agent (application traffic)</td>
+            <td>c4.xlarge, c5.xlarge (Ubuntu workers)</td>
+            <td></td>
+            <td>12 vCPUs, 16 GB RAM</td>
+            <td>12 vCPUs, 16 GB RAM</td>
+            <td>12 vCPUs, 16 GB RAM</td>
+            <td>12 vCPUs, 16 GB RAM</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Middleware</td>
+            <td>c4.2xlarge, c5.2xlarge (Ubuntu workers)</td>
+            <td></td>
+            <td>&#10060;</span></td>
+            <td>e2-standard-16</td>
+            <td></td>
+            <td>8 vCPUs, 12 GB RAM, 256 GB SSD </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Licensing</td>
+            <td>2 vCPUs, 4 GB RAM, 12 GB SSD</td>
+            <td></td>
+            <td>&#10060;</td>
+            <td>Standard F4s (4 vCPUs, 8 GB RAM)</td>
+            <td></td>
+            <td>2 vCPUs, 4 GB RAM, 12 GB SSD</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <BR>
+    <h3><a name="Supported Browsers">Supported Browsers</a></h3>
+    The LoadCore web user interface supports the following browsers:
+    <ul>
+        <li>Chrome v.89 (or later)</li>
+        <li>Firefox v.86 (or later)</li>
+        <li>Edge Chromium v.90 (or later)</li>
+        <li>Safari v.14 (or later)</li>
+    </ul>
+
+
+    <BR>
+    <H3>Supported NICs for Application Traffic</H3>
+    <UL>
+        <LI>Intel 10G/25G/40G</LI>
+        <LI>Mellanox ConnectX-4/5/6 25G/100G</LI>
+        <LI>VMWare ESXi Virtual NIC (vmxnet3)</LI>
+        <LI>Intel E810 100G</LI>
+    </UL>
+    Please check manufacturer's web site for transceiver/cable compatibility.
+
+    <BR>
+
+    <H3>Supported drivers for Application Traffic</H3>
+    <UL>
+        <LI>vmxnet3</LI>
+        <LI>mlx4_core</LI>
+        <LI>mlx5_core</LI>
+        <LI>ixgbe</LI>
+        <LI>ixgbevf</LI>
+        <LI>i40</LI>
+        <LI>i40e</LI>
+        <LI>i40evf</LI>
+        <LI>ena</LI>
+	    <LI>virtio</LI>
+	    <LI>ice</LI>
+    </UL>
+
+    <H3>IxStack over raw sockets/DPDK nodes support:</H3>
+    The following applications and protocol interfaces can run on IxStack over raw sockets/DPDK:
+    <UL>
+        <LI>NG-RAN, CoreSim - N2 and N3</LI>
+        <LI>UPF - N3, N4, N6 and N9</LI>
+        <LI>N4-SMF simulation (SMF+RAN used in UPF isolation topology) - N3 and N4</LI>
+        <LI>DN - N6</LI>
+        <LI>IMS Media Function - N6</LI>
+    </UL>
+    These nodes also run on Linux stack.
+    <BR>
+    All other nodes run only on Linux stack.
+
+
+    <BR><BR>
+
+
+
+    <HR>
+    <H2><A NAME="Fixed in This Release">Fixed in This Release</A></H2>
+    <div class="resolvedDefectsListCssClass">
+        <UL>
+            <!--LoadCore 4.0-->
+			<LI bugid="LOADCORE-1656">SBA Tester: On N20, Namf_MT_enableReachability Request/Response support was added</LI>
+			<LI bugid="LOADCORE-1898">If no security context is present, send PEriodic Registration Update without NAS container. Handle the case of having no security context when doing Mobility Registration Update</LI>
+			<LI bugid="LOADCORE-2118">Fixed an issue where TAU message was sent too late in EPF fallback scenarios</LI>
+			<LI bugid="LOADCORE-2112">Improved the error handling when parsing the Handover Command message</LI>
+			<LI bugid="LOADCORE-2218">Use location header from SM Context Create Response for subsequent requests for this context</LI>
+			<LI bugid="LOADCORE-2603">Fixed length of Apply Action PFCP IE in Release 16</LI>
+			<LI bugid="LOADCORE-2662">AMF sends now a PUT containing null value in the RES* to indicate the synchronization failure to the AUSF</LI>
+			<LI bugid="LOADCORE-2749">Fixed an issue where the UE's remote ID was not updated at the end of the S1 Handover</LI>
+
+        </UL>
+
+    </div>
+
+    <HR>
+    <H2><A NAME="Installation Notes">Installation Notes</A></H2>
+
+    LoadCore 4.0 provides a new middleware image and an upgrade file. Please also note that upgrading a setup from
+    pre-LC3.4 version to LC4.0 is not supported.
+    <BR>
+    LoadCore 3.0 also comes with new agent images, and upgrades.
+    <BR>
+    AWS and Azure images are not distributed on the product download page. AWS image can be found on the<a
+        href="https://aws.amazon.com/marketplace/seller-profile?id=e47b8c97-3fd9-4c39-bd75-9bbe50f3436c"
+        target="_blank"> AWS Marketplace</a>, and both (AWS and Azure) can be shared by request by the engineering team.
+    Please contact engineering at email <a href="loadcore-support@keysighttech.onmicrosoft.com">LoadCore-Support</a> to
+    request access to these images.
+    <BR>
+    <BR>
+    The REST API dashboards names have been changed. For automation users, in case your harness is checking the
+    statistics, please use the REST API stats migration script to automatically convert the old naming into the new one.
+    <BR>
+
+
+
+    Please follow these steps to create a setup for running the product:
+    <BR>
+    <H4>If a LC3.4 or 4.0 setup is not yet deployed, please use the below steps to deploy LC4.0 and configure an account
+    </H4>
+    <OL>
+        <LI>Deploy the UI/middleware cluster OVA file</LI>
+        <LI>Deploy the licensing OVA file (optional)</LI>
+        <LI>After deployment you can access the UI using the MW machine IP and access it using a browser:
+            https://XX.XX.XX.XX. If shortly after deploying the MW the UI is not accessible, you need to wait a couple
+            of minutes for all the pods to start up.</LI>
+        <LI>To access the UI, you will be prompted for a username and password. You will need to register a new user and
+            then use it each time you log in.</LI>
+
+        <LI>Connect to the LC4.0 with your account. If a LC4.0 setup is not already available please use the above steps
+            to deploy a new setup</LI>
+    </OL>
+    <H4>If a LC3.4 setup is deployed, please use the below steps to upgrade:</H4>
+    <OL>
+        <H4>Apply the patch using the UI: </H4>
+        <LI>After connecting to the LC3.4 setup, find the "Gear menu" in the upper right corner and click on it to bring
+            up the menu</LI>
+        <LI>Then, click on "Software Updates"</LI>
+        <LI>Click the "Browse" button and use the opened control to find the LC4.0 upgrade tar on the disk. If the LC environment is cloud (not on premise) please use the cloud tar (LoadCore-MDW-cloud-BUILD_VERSION.tar).</LI>
+        <LI>Click on the "Start Update" button to apply the patch and wait for the procedure to end. </LI>
+        <LI>Refresh your LoadCore page in the broswser</LI>
+        <LI>Access the same menu and check the version of the setup again to make sure that the patch has been applied
+            successfully.</LI>
+    </OL>
+    <OL>
+        <H4>Apply the patch using the KCOS CLI: </H4>
+        <LI>Connect to the LC3.4 setup with either SSH (on port 22: admin/admin user) or directly through the console
+            (console -> admin/admin user). This will make available the KCOS CLI.</LI>
+        <LI>Copy the LC4.0 update file to the MW using SCP. (admin/admin user). If the LC environment is cloud (not on premise) please use the cloud tar (LoadCore-MDW-cloud-BUILD_VERSION.tar).</LI>
+        <LI>Give the following command in the KCOS CLI pointing to the update tar that was copied on the MW machine:
+            kcos deployment offline-install ./LoadCore-MDW-BUILD_VERSION.tar </LI>
+        <LI>Wait for the process to finish. This might take several minutes. </LI>
+        <LI>Refresh your LoadCore page in the broswser</LI>
+        <LI>Access the UI and check the version of the setup to make sure that the patch has been applied successfully.
+        </LI>
+    </OL>
+
+
+    <H4>For deploying the agents, please follow these steps:</H4>
+    <OL>
+        <LI>Deploy the agent OVA file</LI>
+        <LI>Add another NIC to the agent VM from the hypervisor configuration window. This will be the test NIC.</LI>
+        <LI>Log in to the agent VM and configure the management interface, if needed</LI>
+        <LI>Run the agent-setup.sh script and follow the steps in the interactive setup. This step is required to
+            connect the agent to the middleware/UI cluster.</LI>
+        <PRE>#  sudo ./agent-setup.sh</PRE>
+        <LI>At this point, you should be able to see the newly created agent in the UI</LI>
+    </OL>
+    Repeat these steps to deploy as many agents as required.
+	<H4>For upgrading the agents, please follow these steps:</H4>
+	<OL>
+		<LI>Use the following command to install libunbound2:</LI>
+		<PRE>#  sudo apt-get install libunbound2
+		<LI>Apply the REST API command to update the agent (replace the IP and location of the .tgz as needed):</LI>
+curl -kX PUT https://XX.XX.XX.XX/api/v1/update --upload-file /home/ixia/LoadCore-Agent-Update-BUILD_VERSION.tgz
+	</OL>
+
+    <HR>
+    <H2><A NAME="Additional Documentation">Additional Documentation</A></H2>
+    Please refer to the <A
+        HREF="https://downloads.ixiacom.com/library/user_guides/LoadCore/3.2/UG/LoadCore_UserGuide.pdf">TODO user guide</a> and
+    <a href="https://downloads.ixiacom.com/library/user_guides/LoadCore/3.2/LoadCore_DeploymentGuide.pdf">TODO deployment guide</a></A>.
+    <BR><BR>
+
+    <HR>
+    <H2><A NAME="Known Limitations">Known Limitations</A></H2>
+    <div class="knownIssuesListCssClass">
+        <UL>
+
+            <H3> Application Infrastructure </H3>
+		<LI>LoadCore configuration files generated in versions older than 2.3.0 are no longer supported. In order to use such config files, the workaround is to import and export them into a LoadCore 2.3.0 or 3.0.0 instance.</LI>
+            <LI bugid="LOADCORE-1525">When checking license statistics, in the application column appears LoadCore N/A instead of LoadCore</LI>
+            <LI bugid="LOADCORE-1514">When taking licenses from SLUM, instead of username, it appears an hexa code</LI>
+            <LI bugid="LOADCORE-1590">Predefined flows are not working when the agent is connected to the MW without using the LoadBalancer public ip</LI>
+            <LI bugid="BUG1546716">On SRIOV setups using Intel NIC we can use a maximum of 4 cores</LI>
+            <LI bugid="">On SRIOV setups using Intel NIC, the recommendation is to use a MTU equal to 1480 when
+                configuring VLANs on the N3 interface</LI>
+            <LI>Deploying a new middleware, in rare occasions, fails because of the weavenet pod gives an error. The
+                workaround is to delete the weavenet pod which will trigger the pod to be recreated correctly</LI>
+            <LI bugid="BUG1558579"> Sometimes a test could fail to start with 'Lizard communication error' if the
+                required agents were rebooted from UI before starting the test. As a workaround the user should wait for
+                about a minute then start the test again.</LI>
+            <LI bugid="BUG1561108"> Sometimes the LC MW becomes unavailable after a reboot. Workaround: reboot the LC MW
+                again.</LI>
+            <LI bugid="LoadCore-778"> Sometimes the LC MW UI hangs while it gets updated. Workaround: wait several
+                minutes, refresh the UI and check the Keysight Load Core version.</LI>
+            <LI bugid="LOADCORE-814"> The Per-UE Statistics feature only works with Stateless UDP flow. The Per-UE
+                Statistics will show up as empty in UI if running an Application Traffic test. </LI>
+            <LI bugid="LOADCORE-511"> The Per-UE Statistics feature is currently only supported for the NG-RAN
+                application and will not generate CSVs for any other nodes when running a test with this feature. </LI>
+			<LI bugid="LOADCORE-1475">The Process of updating LoadCore MDW from Web UI in a cloud environment might not reach the end.
+                The workaround is to refresh the Web UI and check the new versions.</LI>
+            <LI bugid="LOADCORE-2286">Reserved subnets ( e.g 169.254.0.0) are not supported for management communication </LI>
+            <LI bugid="ISGAPPSEC2-24079">On License Server the search bar from license statistics is not working. The workaround is to manually search the strings </LI>
+
+            <H3> Control Plane</H3>
+			<!-- LC 4.0-->
+			<LI>SBI Fuzzer should not be used in scenarios with SEPP and SCP as it may cause routing problems</LI>
+			<LI>Multipart HTTP messages are not modified by SBI Fuzzer</LI>
+			<LI>The DNN reactivation timer is deactivated if an IRAT mobility occurs before the timer expires</LI>
+			<LI>TUAK supports only: K values of 128 bits, MAC-A values of 64 bits, MAC-S values of 64 bits, RES values of 64 bits, CK values of 128 bits and IK values of 128 bits </LI>
+			<LI>PWS/ETWS: PWS Cancel Response sent by the gNodeB contains a wrong value for numberOfBroadcasts IE</LI>
+			<LI>PWS/ETWS: Cannot configure subsequent WriteReplaceWarningRequests with different (Message Identifier IE and/or Serial Number IE) with/without Concurrent Warning Message Indicator IE</LI>
+			<LI>PWS/ETWS: AMF does not reinitiate Write-Replace-Warning after receiving PWS RESTART INDICATION</LI>
+			<LI>Multiple agents are not supported in this release when IPsec is enabled on NGRAN or CoreSim</LI>
+			<LI>SRIOV is not supported when IPsec is enabled on N2 or N3 interfaces (neither or NGRAN nor on SEG)</LI>
+			<LI>When running CoreSim with IxStack and SEG is enabled, each SEG range can protect just one IP </LI>
+			<LI bugid="LOADCORE-2472">NGRAN will reject IKE AUTH_RESPONSE messages that contain Traffic Selector payload with start address value different than end address value (NGRAN expects a host IP address in Traffic Selector i.e. a netmask of /32 or /128)</LI>
+			<LI>When running NGRAN with IxStack and IPsec is enabled, the same IPsec tunnel cannot be used for both N2 and N3 interfaces</LI>
+			<LI>When IPsec is enabled on either NGRAN or CoreSim, inner IPv4 and outer IPv6 is not supported (both IxStack and Linux stack)</LI>
+			<LI bugid="LOADCORE-2872">SEG uses the interface selected for N2 even in case the SEG range protects only N3 (UPF). This means that the same agent interface needs to be selected for both N2 and N3 interfaces on CoreSim</LI>
+			<LI>The maximum size of the archive uploaded with certificates is 10MB</LI>
+			<LI>DH Group MODP is not supported</LI>
+			<LI>When running with IPsec on RAN, a maximum of 2048 gNodeBs on each range and a maximum of 127 ranges can be configured</LI>
+			<LI>When running with Linux stack only decrypt/encrypt errors stats are published (no statistics for ESP Packets/Bytes Tx/Rx)</LI>
+			<LI>On SEG side IPs are not reused after the IPsec tunnel is torn down</LI>
+			<LI>Rekey for phase2 fails if CREATE_CHILD_SA_REQUEST contains multiple Notifications Payloads and REKEY_SA is not the first payload</LI>
+			<LI>IPsec maximum supported tunnel establishment rate in this release is 50 tunnels per second for default algorithms</LI>
+			<LI>Running IPsec with Emulated Router is not supported in this release</LI>
+			<LI>Running IPsec with Voice Application traffic which has IPSEC enabled is not supported</LI>
+			<LI>Sometimes an agent failure can happen in tests which have Dead Peer Detection and Rekey enabled</LI>
+			
+			<!-- newly added  in LC 3.4-->
+			<LI>When using Ethernet PDU Session and simulating UPF, only one PDU Session per UE is supported </LI>
+			<LI>All NEF services have support only for Release 16.</LI>
+			<LI bugid="LOADCORE-1693">Old Blocked / Greylisted Subscribers -> Start / End IMEI values should be manually modified to match UE IMEI</LI>
+			<LI bugid="LOADCORE-1747">No End Marker support on S1-u interface</LI>
+			<LI>Background Data Transfer service: Location is not supported</LI>
+			<LI>Background Data Transfer service: No support for Renegotiation and Notifications triggered by changes in the network</LI>
+			<LI>SEPP Isolation: SEPP cannot be used on N14 interface</LI>
+			<LI>PCF and SMF simulations from full core topology do not interact with the CHF node</LI>
+			<LI>Debug tools: The Logs archive is not in the same location as CSV results, so when running the csv_analysis tool for parsing the logs, use the -log argument and add manually the logs archives in CSV folder.</LI>
+			
+			<!-- present before LC 3.4-->
+            <LI bugid="LOADCORE-1369">Advanced stats for control plane latency don't increment when per UE stats are enabled</li>
+
+            <LI bugid="">When N14 is enabled, only 2 AMF ranges can be configured</li>
+            <LI bugid="">No support for scenarios where the source AMF changes the active KAMF (horizontal KAMF 
+                derivation)</li>
+            <LI bugid="">The N2 Handover Execution Phase messages might intercalate with the Mobility Registration
+                Update messages resulting in a different order than the one defined in TS23502 4.9.1.3.3</li>
+            <LI bugid="">AMF Distribution on multiple agents is not supported</li>
+            <LI bugid="">N2 handover tests with AMF change and active N14 interface in which one UE performs more than
+                one handover per second might result in handover failure</li>
+            <LI bugid="">Only one type of handover (N2HO with AMF change) is supported while N14 is enabled. N2 Handover
+                with N14 and 5GS to EPS / EPS to 5GS handover is supported with the condition that only one AMF is
+                involved in I-RAT handover and both AMFs have N26 enabled.</li>
+            <LI bugid="">Enter/Exit Idle or Paging are not supported while running with N14 interface enabled</li>
+            <LI bugid="">The DUT AMF must have the correct GUAMI value configured (it should match the one configured on
+                the actual AMF DUT). Otherwise, the N14 connection will not be established.</li>
+            <LI bugid="">For legacy configurations the NSSAI and TAI will be be empty lists. In N14 tests, NSSAI and TAI
+                configuration is mandatory. In order to have successful UE registrations, please make sure the NSSAIs
+                configured on the UE and AMF match.</li>
+            <LI bugid="">N14 interface is mandatory when running AMF nodes on different agents during N2 handover</li>
+            <LI bugid="">Increasing the number of HTTP connections on AMF and SMF does not improve performance</li>
+
+            <LI bugid="">No support for notifications from NEF in this release</LI>
+            <LI bugid="">On NEF for AF Session with QoS service the UE identification is done only based on UE IP</LI>
+            <LI bugid="">On NEF for Service Parameter service the UE identification is done only based on UE IP or GPSI
+            </LI>
+            <LI bugid="">On NEF for Device Triggering service the UE identification is done only based on MSISDN</LI>
+            <LI bugid="">On NEF the following API calls are not implemented:
+                /3gpp-as-session-with-qos/v1/{scsAsId}/subscriptions, /3gpp-service-parameter/v1/{afId}/subscriptions,
+                /3gpp-device-triggering/v1/{scsAsId}/transactions</LI>
+
+            <LI bugid="">No support for Routing Binding Indication on SCP</LI>
+            <LI bugid="">For next hop SCP, if SCP receives from NRF a port, it will use it, otherwise it will default to
+                80 (HTTP) or 443 (HTTPS) depending on the protocol used by SCP</LI>
+
+            <LI bugid="BUG1563489">On N26 interface the GTPv2 messages always contain the recovery IE</LI>
+            <LI bugid="BUG1564769">For idle mobility tests, in case of a race condition between the mobility event and
+                the exit idle event, only the mobility event will be executed</LI>
+            <LI bugid="BUG1547311">For gNodeb+eNodeB simulation, create/delete QoS flows objective is skipped when the
+                UE is attached in 4G</LI>
+            <LI bugid="BUG1563540">UL/DL data is sent only to one UPF while running with SSC mode 2 and SSC mode 3</LI>
+            <LI bugid="BUG1564573">Execution with 2 or more DNNs is not recommended while running with SSC mode 2 and
+                SSC mode 3</LI>
+            <LI bugid="BUG1565513">Port instability could be reported while running with high number of UEs on SSC mode
+                3</LI>
+            <LI bugid="BUG1565500">“PDU session release UE originating failed” could be incremented while running with
+                high number of UEs on SSC mode 2</LI>
+            <LI bugid="BUG1548431">Secondary objectives may not get a chance to start when the primary objective is set
+                to "subscribers per second" and the hold time value is set to one second. Set a longer hold time to
+                allow the secondary objectives to start</LI>
+            <LI bugid="BUG1549118">Test will not start if the connection start rate can't be reached and maintained</LI>
+            <LI>PCF initiated create/delete QoS flows objective should not be run together with other secondary
+                objectives</LI>
+            <LI bugid="BUG1547689">NSSF response to GET Network Slice Selection request doesn't contain configured NSSAI
+                when the requested NSSAI includes an S-NSSAI that is not valid in the serving PLMN.</LI>
+            <LI bugid="BUG1548984">Multiple registration messages for UDM are sent to NRF while the topology contains
+                two UE subscriber ranges</LI>
+            <LI>For N2 Handover with AMF change, the S-AMF does not send the update SM context request to SMF in case of
+                failure on T-AMF</LI>
+            <LI>For N2 Handover with AMF change testing, it is recommended to have only the handover as a secondary
+                objective</LI>
+            <LI>All SBA nodes running on the same agent use the same HTTP/HTTPS server ports (80/443)</LI>
+            <LI>Unexpected behavior can be encountered when using duplicate UE IP addresses</LI>
+            <LI>UPF does not respond to session deletion retries</LI>
+            <LI>Increment for RAND parameter does not work as expected when the value overflows</LI>
+            <LI>Use remote F-TEID allocation option needs to be set when running the SMF node from UPF isolation
+                topology on multiple agents</LI>
+            <LI>SMF simulation from full core topology responds with error cause 404 to UDM initiated notifications</LI>
+            <LI bugid="BUG1549394">Statistics for default QoS flow activation procedures represent initial session
+                establishment procedures and one procedure might activate more than one QoS flow.</LI>
+            <LI bugid="BUG1553725">UPF isolation: N4-SMF SLAAC message stats are not populated when their value is 0
+            </LI>
+            <LI bugid="ENH1551047">UPF isolation: No support for unsolicited RAs</LI>
+            <LI bugid="ENH1551047">UPF isolation: SLAAC is not supported in N9 or uplink classifier tests</LI>
+            <LI bugid="BUG1555343">UPF isolation: SLAAC is not supported on scenarios with HTTPS flows</LI>
+            <LI bugid="BUG1553615">UPF isolation: When running consecutive tests without and then with "use remote
+                F-TEID allocation", the test will no longer start because of error "Test Stopped: Agents for client not
+                configured within 1m0s". At a new run the test will then start.</LI>
+            <LI bugid="BUG1562621">Session report for 5G scenario works only for one QoS flow</LI>
+            <LI>Only one MME with N26 interface can be simulated in full core topology</LI>
+            <LI>gNodeB simulation: For network initiated QoS flow modification, none of the parameters changed by the
+                network initiated QoS flow modification will be enforced</LI>
+            <LI>gNodeB simulation: For network initiated QoS flow modification, the NG-RAN node supports handling the
+                QoS flow modification procedure only for one PDU session per procedure</LI>
+            <LI>gNodeB simulation: For network initiated QoS flow modification, the NG-RAN node supports handling the
+                QoS flow modification procedure containing only one type of action per procedure (create QoS flow/modify
+                existing QoS flow/release QoS flow)</LI>
+            <LI>gNodeB simulation: For network initiated QoS flow modification, for existing QoS flows in order to
+                ensure predictability, the interval between the creation and deletion of the QoS flow should be large
+                enough to support the successful finalization for the modification of the existing QoS flow</LI>
+            <LI>In SBA Tester, when having SMS and PCF primary objectives at the same time, the test will have an
+                undefined behavior.</LI>
+            <LI>In SBA Tester, when having SMS objective, only one IP address should be configured on the test
+                interface.</LI>
+            <LI>The SMS activation procedure in SBA Tester supports only the 3gpp-access access type.</LI>
+            <LI>SBA Tester is not doing any action when it receives SMS specific errors. SBA Tester will only verify the
+                validity of the SMS message.</LI>
+            <LI>SBA Tester will send error message when TI doesn’t match and will not wait for a message with correct
+                TI.</LI>
+            <LI>SBA Tester does not support STATUS-REPORT processing. Receiving this message will result in an error
+                response 400 and cause “SMS_PAYLOAD_ERROR”.</LI>
+            <LI>SBA Tester does not support two or more SMS procedures in the same time in a UE range (mobile originated
+                or mobile terminated).</LI>
+            <LI>SMSF node will originate SMS regardless of how many mobile originated SMS received.</LI>
+            <LI>In SBA Tester, when using ConvergedChargingSMF2CHF primary objective, only the first SMF simulated node
+                will generate requests even if more SMF nodes are configured.</LI>
+            <LI>NG-RAN does not support two or more SMS procedures at the same time on the same UE range (mobile
+                originated or mobile terminated).</LI>
+            <LI>NG-RAN does not support STATUS-REPORT processing. Receiving this message will automatically trigger
+                mobile terminated procedure or continue mobile originated procedure. </LI>
+            <LI>The only error process by NG-RAN is CP-ERROR and receiving this error results in the stop of the SMS
+                procedure.</LI>
+            <LI>On NG-RAN, when received TI that doesn’t match the expected one, the procedure will continue without
+                reporting this error.</LI>
+            <LI bugid="BUG1552930">AMF does not send PDU session establishment reject to UE if AMF failed to discover
+                SMF.</LI>
+            <LI bugid="BUG1552932">AMF node sends wrong AMF UE ID in UE context release in case of AMF failed to
+                discover UDM.</LI>
+            <LI bugid="BUG1551716">Only one query with target-nf-type set to SMF is executed by AMF (for first PDU
+                session) while running a test with two or more DNNs. There is only one SMF node supported per agent.
+            </LI>
+            <LI bugid="BUG1553123">The minimum number of queries (per type of discovery) is equal to the minimum between
+                UE count and CPU core count when requester-nf-type is PCF or AUSF, or minimum between UE count, HTTP
+                connection count and CPU core count when requester-nf-type is AMF or SMF.</LI>
+            <LI bugid="BUG1552933">The AMF node does not stop the current procedure (PDU session establishment or PDU
+                session modification) in case SMF fails to discover AMF.</LI>
+            <LI>IPv6 SLAAC is supported only on RAN node in full core topology. SMF node in full core topology does NOT
+                support IPv6 SLAAC</LI>
+            <LI bugid="BUG1560069"> UDM does not support authentication results for multiple registrations</LI>
+            <LI bugid="BUG1560062"> AUSF does not signal authentication result removal to UDM</LI>
+            <LI bugid="BUG1558982">If UEs are registered for emergency services and periodic registration update is
+                enabled, test might become unresponsive.</LI>
+
+
+
+                <H3> User Plane</H3>
+
+                <H4> Infrastructure & Data</H4>
+                    <LI>Application traffic needs different agents for initiator and terminator sides</LI>
+                    <LI bugid="BUG1542956">Running the whole topology with application traffic on a single agent is not supported</LI>
+                    <LI bugid="BUG1537764">Running a full core test with passthrough activated and VLAN set on the N6 UPF interface cause the connection between RAN and AMF to be lost</LI>
+                    <LI bugid="BUG1555179">UPF is not receiving traffic in case the RAN N3 interface is the 2nd test interface - UPF passthrough topology on container agent</LI>
+                    <LI bugid="BUG1554588">UPF passthrough is sending downlink traffic from DN on intervals</LI>
+                    <LI>Only one IP can be configured as gateway on NG-RAN and UPF passthrough settings</LI>
+                    <LI>Lost user plane packets may be encountered when running enter/exit idle or paging secondary objectives together with UPF passthrough</LI>
+                    <LI>DN UDP traffic ports are not configured unless at least a stateless UDP flow is configured with desired traffic ports </LI>
+                    <LI>All packets coming on the passthrough interface will be mapped on the default flow on N3 interface </LI>
+                    <LI bugid="LOADCORE-642">TCP resets are seen for the first iteration on single UE tests when running multiple times without service restart</LI>
+                    <LI bugid="">No QoS flow enforcement of rates (AMBR/MFBR) for traffic objective.</LI>
+                    <LI>FTP flows can only be used for upload and the data port for FTP flows is randomly chosen at run-time and cannot be configured</LI>
+                    <LI>Using large HTTP page sizes (e.g. 1GB) is not recommended</LI>
+                    <LI>When running single HTTP/HTTPS flow with persistent TCP connection option enabled, a lower number of UEs will be active for userplane traffic during the test duration as compared to the configured number of UEs. When running with Persistent TCP connection option disabled, all configured UEs will be active for userplane traffic.</LI>
+                    <LI>Enter/exit idle secondary objective is compatible with Application traffic data flows only. Paging is not supported in this case.</LI>
+            
+                <h4> Media </H4>
+                
+                    <LI>In tests with Voice application traffic, only one agent is supported per node</LI>
+                    <LI>Voice application traffic is working only with the active subscribers primary objective</LI>
+                    <LI>Only create/delete QoS flows and handovers secondary objectives are working with Voice application traffic. Other objectives like idle and paging are not working.</LI>
+                    <LI>For tests with Voice application traffic, EVS full header is working with only one audio frame per RTP packet</LI>
+                    <LI bugid="BUG1561143">On EPS fallback, the first few RTP packets are sent on the default 5G QoS flow until the 4G bearer is created.</LI>
+                    <LI>H.264 is the only video codec supported for VoNR</LI> 
+
+
+
+        </UL>
+    </div>
+
+    <HR>
+    <H2><A NAME="How to Report Problems">How to Report Problems</A></H2>
+    <table class="outerTable" width="40%" border="1">
+        <tbody>
+            <tr>
+                <td>
+                    <p>
+                    <h3><strong> Ixia Main Office </strong></h3>
+                    </p>
+                    <p>26601 W. Agoura Road</p>
+                    <p>Calabasas, California 91302, USA</p>
+                    </p>
+                    <table class="innerTable" width="100%" border="1">
+                        <tr>
+                            <td rowspan="1">Web Address:</td>
+                            <td><A HREF="https://www.ixiacom.com/contact/info"
+                                    target="_blank">www.ixiacom.com/contact/info</A></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>1-877-367-4942 - Toll-frree North America</br></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>1-818-871-1800 - Outside North America</br></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="1">Fax:</td>
+                            <td>1-818-871-1805</br></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><strong> Global Support</strong></p>
+                    <table class="innerTable" width="100%" border="1">
+                        <tr>
+                            <td rowspan="1">Email:</td>
+                            <td><A HREF="mailto:support@ixiacom.com">support@ixiacom.com</A></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>1-818-595-2599</br></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><strong> Asia Pacific Customer Support</strong></p>
+                    <table class="innerTable" width="100%" border="1">
+                        <tr>
+                            <td rowspan="1">Email:</td>
+                            <td><A HREF="mailto:support-asiapac@ixiacom.com">support-asiapac@ixiacom.com</A></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>+91-80-4939-6410</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><strong> Europe, Middle East, and Africa Customer Support</strong></p>
+                    <table class="innerTable" width="100%" border="1">
+                        <tr>
+                            <td rowspan="1">Email:</td>
+                            <td><A HREF="mailto:support-emea@ixiacom.com">support-emea@ixiacom.com</A></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>+40-21-301-5699</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><strong> India Customer Support</strong></p>
+                    <table class="innerTable" width="100%" border="1">
+                        <tr>
+                            <td rowspan="1">Email:</td>
+                            <td><A HREF="mailto:support-india@ixiacom.com">support-india@ixiacom.com</A></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>+91-80-4939-6410</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><strong>Japan Customer Support</strong></p>
+                    <table class="innerTable" width="100%" border="1">
+                        <tr>
+                            <td rowspan="1">Email:</td>
+                            <td><A HREF="mailto:support-japan@ixiacom.com">support-japan@ixiacom.com</A></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>+81-3-5326-1980</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><strong>China Customer Support</strong></p>
+                    <table class="innerTable" width="100%" border="1">
+                        <tr>
+                            <td rowspan="1">Email:</td>
+                            <td><A HREF="mailto:support-china@ixiacom.com ">support-china@ixiacom.com </A></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>400-898-0598 (Greater China region)</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">Phone:</td>
+                            <td>+86-10-5732-3932 (Hong Kong customers)</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</BODY>
+
+</HTML>
