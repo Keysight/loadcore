@@ -1,6 +1,6 @@
 aws_access_key="<access-key>"
 aws_secret_key="<secret-key>"
-stack_name="LoadCore3.2.0_TF"
+stack_name="LoadCore4.0.0_TF"
 ssh_key="terraform-key"
 mgmt_security_group="sg-0d70d3f602bcec4a0"
 test_security_group="sg-0d70d3f602bcec4a0"
