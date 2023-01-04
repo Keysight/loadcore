@@ -16,7 +16,7 @@ locals{
 	agent_test_interface_name = "eth1"
     agent_startup_script = <<-EOF
                 #! /bin/bash
-                sudo /home/ixia/agent-setup.sh ${aws_instance.aws_loadcore.private_ip} ${local.agent_mgmt_interface_name} ${local.agent_test_interface_name} y
+                sudo /opt/5gc-test-engine/agent-setup.sh ${aws_instance.aws_loadcore.private_ip} ${local.agent_mgmt_interface_name} "" y
     EOF
     inbound_cidr_rule = concat(var.allowed_cidr,[local.mgmt_subnet],[local.test_subnet])
 }

@@ -50,13 +50,13 @@ variable "loadcore_agent_type" {
 
 variable "loadcore_version" {
   type        = string
-  default     = "LoadCore-MDW-3.4.0-3490-268-*"
+  default     = "LoadCore-MDW-4.0.0-3637-269-*"
   description = "Image name for LoadCore"
 }
 
 variable "loadcore_agent_version" {
   type        = string
-  default     = "LoadCore-Agent-3.4.0.9-*"
+  default     = "LoadCore-Agent-4.0.0.5-*"
   description = "Image name for LoadCore Agent"
 }
 

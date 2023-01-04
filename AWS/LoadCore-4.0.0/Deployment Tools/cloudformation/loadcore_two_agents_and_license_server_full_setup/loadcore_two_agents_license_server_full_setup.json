@@ -4,84 +4,84 @@
     "Mappings": {
         "RegionMap": {
             "eu-north-1": {
-                "AMIAgent": "ami-008adff922ee1c382",
-                "AMILoadCore": "ami-054395e0176626d5e",
-                "AMILicensing": "ami-0bd0e6d7bdb0ebd8c"
+                "AMIAgent": "ami-0d0afbc874e5e558b",
+                "AMILoadCore": "ami-0d03b8789f9f54304",
+                "AMILicensing": "ami-04581a1f0b70221c2"
             },
             "ap-south-1": {
-                "AMIAgent": "ami-0a21ad9025de7e78a",
-                "AMILoadCore": "ami-00908dca8086f1fa7",
-                "AMILicensing": "ami-07e12a484fd189d69"
+                "AMIAgent": "ami-02d85fbea6913ae9d",
+                "AMILoadCore": "ami-0199bc805465c6f9d",
+                "AMILicensing": "ami-0cba3cfe0615f610b"
             },
             "eu-west-3": {
-                "AMIAgent": "ami-07573302ffcb5f5af",
-                "AMILoadCore": "ami-028f66bb0a15efb72",
-                "AMILicensing": "ami-0c9a946e4d195f6f0"
+                "AMIAgent": "ami-03740f76d7108297c",
+                "AMILoadCore": "ami-000d5da42d92caecd",
+                "AMILicensing": "ami-055b8b018a9ada0a6"
             },
             "eu-west-2": {
-                "AMIAgent": "ami-0dfb2119149daed03",
-                "AMILoadCore": "ami-075e6b34c28f59178",
-                "AMILicensing": "ami-07e138d39009fdd24"
+                "AMIAgent": "ami-0bc70cc333a7c0fcf",
+                "AMILoadCore": "ami-046693f3cba31efb1",
+                "AMILicensing": "ami-02aaa9a7715eb8088"
             },
             "eu-west-1": {
-                "AMIAgent": "ami-066318d73167dfc12",
-                "AMILoadCore": "ami-0b2ccc80e84ff81f7",
-                "AMILicensing": "ami-08462661a2ee36793"
+                "AMIAgent": "ami-088468e5a94438c83",
+                "AMILoadCore": "ami-04c41dd44f65efae0",
+                "AMILicensing": "ami-0a6b20fd6dbaa861b"
             },
             "ap-northeast-2": {
-                "AMIAgent": "ami-08a48d127fd55eb87",
-                "AMILoadCore": "ami-0a94ae0747661f3b7",
-                "AMILicensing": "ami-07b839f132107c4b7"
+                "AMIAgent": "ami-0a43dcb9d58a9e6d1",
+                "AMILoadCore": "ami-07289a9b6343e4fac",
+                "AMILicensing": "ami-0d0c4a104267c16bb"
             },
             "ap-northeast-1": {
-                "AMIAgent": "ami-006ef162980f6eba6",
-                "AMILoadCore": "ami-0a986c737495bab58",
-                "AMILicensing": "ami-04d6417168d080ccd"
+                "AMIAgent": "ami-0229c92c7bd77dde6",
+                "AMILoadCore": "ami-0bac0ef35c2c1a93e",
+                "AMILicensing": "ami-061d45d3859a2564c"
             },
             "sa-east-1": {
-                "AMIAgent": "ami-08ce6282d96d0942a",
-                "AMILoadCore": "ami-0cdfe40a7221e0395",
-                "AMILicensing": "ami-0aae23313ea529eff"
+                "AMIAgent": "ami-0d4b24d7855890d46",
+                "AMILoadCore": "ami-043c3b9ade9c5235f",
+                "AMILicensing": "ami-0db78dce133380058"
             },
             "ca-central-1": {
-                "AMIAgent": "ami-0227bad21e4bc6765",
-                "AMILoadCore": "ami-0d9c9b83a02c56a23",
-                "AMILicensing": "ami-0ac93ea2a548b7973"
+                "AMIAgent": "ami-03e2564dc79d8af34",
+                "AMILoadCore": "ami-0ee01f4f251497d38",
+                "AMILicensing": "ami-009dbe1f0ba6fb146"
             },
             "ap-southeast-1": {
-                "AMIAgent": "ami-0d2d1a20030b4b6a9",
-                "AMILoadCore": "ami-015b32e356096ccf8",
-                "AMILicensing": "ami-0703a1de8d5ab696d"
+                "AMIAgent": "ami-012e7c548c6945522",
+                "AMILoadCore": "ami-0fce70a53bebe9d76",
+                "AMILicensing": "ami-0ed1bf7a7f0e0d2f7"
             },
             "ap-southeast-2": {
-                "AMIAgent": "ami-044b6b1c44ebb57ad",
-                "AMILoadCore": "ami-06e3a8518f7261015",
-                "AMILicensing": "ami-0a9ad1585234c33e3"
+                "AMIAgent": "ami-028a0522890695523",
+                "AMILoadCore": "ami-026f91d1203ac5a2e",
+                "AMILicensing": "ami-0931af4fe7f9d3fd1"
             },
             "eu-central-1": {
-                "AMIAgent": "ami-0a7e3ad4a3515fa27",
-                "AMILoadCore": "ami-0a382fb6bd2d894a8",
-                "AMILicensing": "ami-04edaaa90bd32db18"
+                "AMIAgent": "ami-0404c9792d46e6283",
+                "AMILoadCore": "ami-0990bdd533c8820c5",
+                "AMILicensing": "ami-08b09523ce94effed"
             },
             "us-east-1": {
-                "AMIAgent": "ami-099cb1114b314d26a",
-                "AMILoadCore": "ami-0a740ae09df028928",
-                "AMILicensing": "ami-07ed26b6d721d7ba9"
+                "AMIAgent": "ami-02acf1d0d1ca554f2",
+                "AMILoadCore": "ami-0fa40ed30dcc779b8",
+                "AMILicensing": "ami-0cbf90f0483e0cac7"
             },
             "us-east-2": {
-                "AMIAgent": "ami-06e13ef51d4695f97",
-                "AMILoadCore": "ami-06729b67c524331d0",
-                "AMILicensing": "ami-0473edb0e2ebb0aff"
+                "AMIAgent": "ami-0523464634c1cc42b",
+                "AMILoadCore": "ami-0e6852c7c4f31cb1e",
+                "AMILicensing": "ami-094094b7784d41136"
             },
             "us-west-1": {
-                "AMIAgent": "ami-05e09656503e573c1",
-                "AMILoadCore": "ami-043b039528721bd99",
-                "AMILicensing": "ami-06bb4ea6d41a12390"
+                "AMIAgent": "ami-0c6095ef08086cdf7",
+                "AMILoadCore": "ami-084ec71765ffa7886",
+                "AMILicensing": "ami-0fef3d9ab728bc0fc"
             },
             "us-west-2": {
-                "AMIAgent": "ami-0dd35136882d45d11",
-                "AMILoadCore": "ami-08463cab513ff6378",
-                "AMILicensing": "ami-0ae8fa8fb8f7168ff"
+                "AMIAgent": "ami-08fde1c24eec1d7c9",
+                "AMILoadCore": "ami-0639920092414e1c0",
+                "AMILicensing": "ami-01c8539502951b3a7"
             }
         },
         "VariableMap": {
@@ -93,7 +93,7 @@
                 "InstanceEbsDeleteOnTermination": "true",
                 "LicenseServerInstanceEbsDeleteOnTermination": "false",
                 "InstanceEbsVolumeType": "gp2",
-                "LoadCoreVersion": "LoadCore3.4.0",
+                "LoadCoreVersion": "LoadCore4.0.0",
                 "TestSubnetCidrBlock": "20.0.0.0/16",
                 "Agent1PrivateIPAddresses": "20.0.4.12,20.0.4.13,20.0.4.14,20.0.4.15,20.0.4.16,20.0.4.17,20.0.4.18,20.0.4.19,20.0.4.20,20.0.4.21",
                 "Agent2PrivateIPAddresses": "20.0.5.12,20.0.5.13,20.0.5.14,20.0.5.15,20.0.5.16,20.0.5.17,20.0.5.18,20.0.5.19,20.0.5.20,20.0.5.21",
@@ -1240,7 +1240,7 @@
                                 "#!/bin/bash\n",
                                 {
                                     "Fn::Sub": [
-                                        "/bin/bash /home/ixia/agent-setup.sh ${ClusterDeployment.PrivateIp} ${MgmtAgentInterfaceName} ${TestAgentInterfaceName} y",
+                                        "/bin/bash /opt/5gc-test-engine/agent-setup.sh ${ClusterDeployment.PrivateIp} ${MgmtAgentInterfaceName} \"\" y",
                                         {
                                             "MgmtAgentInterfaceName": {
                                                 "Fn::FindInMap": [
@@ -1359,7 +1359,7 @@
                                 "#!/bin/bash\n",
                                 {
                                     "Fn::Sub": [
-                                        "/bin/bash /home/ixia/agent-setup.sh ${ClusterDeployment.PrivateIp} ${MgmtAgentInterfaceName} ${TestAgentInterfaceName} y",
+                                        "/bin/bash /opt/5gc-test-engine/agent-setup.sh ${ClusterDeployment.PrivateIp} ${MgmtAgentInterfaceName} \"\" y",
                                         {
                                             "MgmtAgentInterfaceName": {
                                                 "Fn::FindInMap": [
