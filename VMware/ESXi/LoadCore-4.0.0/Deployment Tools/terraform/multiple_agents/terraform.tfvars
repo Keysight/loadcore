@@ -9,5 +9,5 @@ loadcore_mdw_ip="10.38.149.164"
 loadcore_agent_management_interface_name="ens32"
 vm_prefix="TF_LoadCore_Agent"
 number_of_agents=2
-ram=8192
-vcpus=2
+ram=4096
+vcpus=4
