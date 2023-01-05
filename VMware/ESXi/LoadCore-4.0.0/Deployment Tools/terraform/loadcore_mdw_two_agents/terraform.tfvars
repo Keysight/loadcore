@@ -8,5 +8,5 @@ management_network="VM Network"
 test_network="Port2"
 loadcore_agent_management_interface_name="ens32"
 vm_prefix="TF_LoadCore"
-ram=8192
-vcpus=2
+ram=4096
+vcpus=4
