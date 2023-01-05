@@ -28,8 +28,8 @@ In order to modify the default values, you should modify the **terraform.tfvars*
 | loadcore_agent_management_interface_name | Requires input | Specify the name of the management network interface from LoadCore Agent VM. To find the name, you will need to manually create an agent on that ESXi or check the name on another VM. |
 | vm_prefix | Requires input | Specify a prefix for the VMs name. |
 | number_of_agents | Requires input | Specify the number of deployed agents. All the deployed agents will have the same characteristics. |
-| ram | 8192 | The amount of RAM added to LoadCore Agents VM |
-| vcpus | 8192 | The number of vCPUs added to LoadCore Agents VM |
+| ram | 4096 | The amount of RAM added to LoadCore Agents VM |
+| vcpus | 4 | The number of vCPUs added to LoadCore Agents VM |
 
 
 ## Destruction
