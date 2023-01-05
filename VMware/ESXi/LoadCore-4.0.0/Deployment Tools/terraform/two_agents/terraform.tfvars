@@ -8,5 +8,5 @@ test_network="Port2"
 loadcore_mdw_ip="1.1.1.1"
 loadcore_agent_management_interface_name="ens32"
 vm_prefix="TF_LoadCore_Agent"
-ram=8192
+ram=4096
 vcpus=4
