@@ -8,7 +8,7 @@ Prerequisites in order to managed the LoadCore product across releases:
 
 - deploy one LoadCore MDW using the terraform from **VMware\ESXi\terraform\one_loadcore_mdw**
 
-- deploy the LoadCore Agents using the terraforms from **VMware\ESXi\terraform**
+- deploy the LoadCore Agents using the terraforms from **VMware\ESXi\terraform\multiple_agents**
 
 The updateLoadCore tool can be also used on an existing LoadCore setup.
 
@@ -36,7 +36,16 @@ The updateLoadCore tool can be also used on an existing LoadCore setup.
 
 #### Prerequisites
 The prerequisites are:
+1.	Download terraform tool (for example https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_windows_386.zip). Add it in System Variables -> Path of the machine running the terraform.
 - Latest version of Terraform installed. https://learn.hashicorp.com/tutorials/terraform/install-cli
+
+2.	(If the machine has access to internet, this step can be skipped)
+Download the josenk provider (for example https://github.com/josenk/terraform-provider-esxi/releases -> terraform-provider-esxi_1.10.2_windows_386.zip).
+Place a copy of it in your path or current directory of your terraform project.
+Note: The josenk provider is used because the hashicorp/terraform provider does not support ovf/ova deploy from vSphere without having vCenter. More about this limitation here:
+https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs/resources/virtual_machine (“ovf deployment requires vCenter and is not supported on direct ESXi connections.”)
+
+3.	Download the ovf tool (for example https://developer.vmware.com/web/tool/4.4.0/ovf) and add it in System Variables -> Path of the machine running the terraform.
 
 #### How to use:
 
