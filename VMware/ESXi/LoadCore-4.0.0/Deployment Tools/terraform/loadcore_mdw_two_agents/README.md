@@ -27,8 +27,8 @@ In order to modify the default values, you should modify the **terraform.tfvars*
 | management_network | Requires input | Specify the name of the Virtual Machine Port Group for management. |
 | test_network | Requires input | Specify the name of the Virtual Machine Port Group for testing. |
 | vm_prefix | Requires input | Specify a prefix for the VMs name. |
-| ram | 8192 | The amount of RAM added to LoadCore Agents VM |
-| vcpus | 8192 | The number of vCPUs added to LoadCore Agents VM |
+| ram | 4096 | The amount of RAM added to LoadCore Agents VM |
+| vcpus | 4 | The number of vCPUs added to LoadCore Agents VM |
 
 
 ## Destruction
